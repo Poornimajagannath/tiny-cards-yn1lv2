@@ -1,0 +1,1130 @@
+{
+  "1": {
+    "title": "Lesson 1 · m a t",
+    "subtitle": "Sounds → words → blend + fast rep",
+    "sounds": [
+      {
+        "letter": "m",
+        "say": "mmm",
+        "key": "m"
+      },
+      {
+        "letter": "a",
+        "say": "aaa",
+        "key": "a"
+      },
+      {
+        "letter": "t",
+        "say": "t",
+        "key": "t"
+      }
+    ],
+    "builds": [
+      {
+        "label": "ma",
+        "key": "ma",
+        "parts": "/m/ /a/"
+      },
+      {
+        "label": "at",
+        "key": "at",
+        "parts": "/a/ /t/"
+      },
+      {
+        "label": "mat",
+        "key": "mat",
+        "parts": "/m/ /a/ /t/"
+      }
+    ],
+    "blends": [
+      {
+        "label": "ma",
+        "key": "ma_blend"
+      },
+      {
+        "label": "at",
+        "key": "at_blend"
+      },
+      {
+        "label": "mat",
+        "key": "mat_blend"
+      }
+    ],
+    "script": [
+      "Letter sounds first.",
+      "Big word cards next.",
+      "Blend = slow stretch, then the word fast twice (mat… mat mat).",
+      "Stop when she stops."
+    ]
+  },
+  "2": {
+    "title": "Lesson 2 · add s",
+    "subtitle": "sat · mat · Sam",
+    "sounds": [
+      {
+        "letter": "m",
+        "say": "mmm",
+        "key": "m"
+      },
+      {
+        "letter": "a",
+        "say": "aaa",
+        "key": "a"
+      },
+      {
+        "letter": "t",
+        "say": "t",
+        "key": "t"
+      },
+      {
+        "letter": "s",
+        "say": "sss",
+        "key": "s"
+      }
+    ],
+    "builds": [
+      {
+        "label": "sat",
+        "key": "sat",
+        "parts": "/s/ /a/ /t/"
+      },
+      {
+        "label": "mat",
+        "key": "mat",
+        "parts": "/m/ /a/ /t/"
+      },
+      {
+        "label": "Sam",
+        "key": "sam",
+        "parts": "/s/ /a/ /m/"
+      }
+    ],
+    "blends": [
+      {
+        "label": "sat",
+        "key": "sat_blend"
+      },
+      {
+        "label": "mat",
+        "key": "mat_blend"
+      },
+      {
+        "label": "Sam",
+        "key": "sam_blend"
+      }
+    ],
+    "script": [
+      "Warm up sounds.",
+      "Tap big words.",
+      "Blend slow, then sat sat fast.",
+      "One specific praise."
+    ]
+  },
+  "3": {
+    "title": "Lesson 3 · stretch review",
+    "subtitle": "Review blends + dogfish play",
+    "sounds": [
+      {
+        "letter": "m",
+        "say": "mmm",
+        "key": "m"
+      },
+      {
+        "letter": "a",
+        "say": "aaa",
+        "key": "a"
+      },
+      {
+        "letter": "t",
+        "say": "t",
+        "key": "t"
+      },
+      {
+        "letter": "s",
+        "say": "sss",
+        "key": "s"
+      }
+    ],
+    "builds": [
+      {
+        "label": "sat",
+        "key": "sat",
+        "parts": "/s/ /a/ /t/"
+      },
+      {
+        "label": "Sam",
+        "key": "sam",
+        "parts": "/s/ /a/ /m/"
+      },
+      {
+        "label": "mat",
+        "key": "mat",
+        "parts": "/m/ /a/ /t/"
+      }
+    ],
+    "blends": [
+      {
+        "label": "sat",
+        "key": "sat_blend"
+      },
+      {
+        "label": "Sam",
+        "key": "sam_blend"
+      },
+      {
+        "label": "mat",
+        "key": "mat_blend"
+      }
+    ],
+    "script": [
+      "Keep voice on.",
+      "Blend + fast rep.",
+      "Optional dogfish / fishdog pointing.",
+      "Guessing is fine."
+    ]
+  },
+  "4": {
+    "title": "Lesson 4 · d + h",
+    "subtitle": "dad · had · sad",
+    "sounds": [
+      {
+        "letter": "d",
+        "say": "d",
+        "key": "d"
+      },
+      {
+        "letter": "a",
+        "say": "aaa",
+        "key": "a"
+      },
+      {
+        "letter": "h",
+        "say": "hhh",
+        "key": "h"
+      },
+      {
+        "letter": "s",
+        "say": "sss",
+        "key": "s"
+      }
+    ],
+    "builds": [
+      {
+        "label": "dad",
+        "key": "dad",
+        "parts": "/d/ /a/ /d/"
+      },
+      {
+        "label": "had",
+        "key": "had",
+        "parts": "/h/ /a/ /d/"
+      },
+      {
+        "label": "sad",
+        "key": "sad",
+        "parts": "/s/ /a/ /d/"
+      }
+    ],
+    "blends": [
+      {
+        "label": "dad",
+        "key": "dad_blend"
+      },
+      {
+        "label": "had",
+        "key": "had_blend"
+      },
+      {
+        "label": "sad",
+        "key": "sad_blend"
+      }
+    ],
+    "script": [
+      "New /d/ and /h/.",
+      "Big words.",
+      "Blend had… then had had fast so she can echo.",
+      "Revise anytime."
+    ]
+  },
+  "5": {
+    "title": "Lesson 5 · p + i",
+    "subtitle": "tip · sip · sit · pit",
+    "sounds": [
+      {
+        "letter": "p",
+        "say": "p",
+        "key": "p"
+      },
+      {
+        "letter": "i",
+        "say": "iii",
+        "key": "i"
+      },
+      {
+        "letter": "t",
+        "say": "t",
+        "key": "t"
+      },
+      {
+        "letter": "s",
+        "say": "sss",
+        "key": "s"
+      }
+    ],
+    "builds": [
+      {
+        "label": "tip",
+        "key": "tip",
+        "parts": "/t/ /i/ /p/"
+      },
+      {
+        "label": "sip",
+        "key": "sip",
+        "parts": "/s/ /i/ /p/"
+      },
+      {
+        "label": "sit",
+        "key": "sit",
+        "parts": "/s/ /i/ /t/"
+      },
+      {
+        "label": "pit",
+        "key": "pit",
+        "parts": "/p/ /i/ /t/"
+      }
+    ],
+    "blends": [
+      {
+        "label": "tip",
+        "key": "tip_blend"
+      },
+      {
+        "label": "sip",
+        "key": "sip_blend"
+      },
+      {
+        "label": "sit",
+        "key": "sit_blend"
+      },
+      {
+        "label": "pit",
+        "key": "pit_blend"
+      }
+    ],
+    "script": [
+      "New /p/ and short /i/.",
+      "Build tip sip sit pit.",
+      "Blend slow, then word word fast.",
+      "Stop when she stops."
+    ]
+  },
+  "6": {
+    "title": "Lesson 6 · n",
+    "subtitle": "man · pan · nap · pin",
+    "sounds": [
+      {
+        "letter": "n",
+        "say": "nnn",
+        "key": "n"
+      },
+      {
+        "letter": "a",
+        "say": "aaa",
+        "key": "a"
+      },
+      {
+        "letter": "m",
+        "say": "mmm",
+        "key": "m"
+      },
+      {
+        "letter": "p",
+        "say": "p",
+        "key": "p"
+      },
+      {
+        "letter": "i",
+        "say": "iii",
+        "key": "i"
+      }
+    ],
+    "builds": [
+      {
+        "label": "man",
+        "key": "man",
+        "parts": "/m/ /a/ /n/"
+      },
+      {
+        "label": "pan",
+        "key": "pan",
+        "parts": "/p/ /a/ /n/"
+      },
+      {
+        "label": "nap",
+        "key": "nap",
+        "parts": "/n/ /a/ /p/"
+      },
+      {
+        "label": "pin",
+        "key": "pin",
+        "parts": "/p/ /i/ /n/"
+      }
+    ],
+    "blends": [
+      {
+        "label": "man",
+        "key": "man_blend"
+      },
+      {
+        "label": "pan",
+        "key": "pan_blend"
+      },
+      {
+        "label": "nap",
+        "key": "nap_blend"
+      },
+      {
+        "label": "pin",
+        "key": "pin_blend"
+      }
+    ],
+    "script": [
+      "New /n/.",
+      "Big word cards.",
+      "Blend + fast double.",
+      "Pick 2–3 words if she’s tired."
+    ]
+  },
+  "7": {
+    "title": "Lesson 7 · o",
+    "subtitle": "pot · top · mop · on",
+    "sounds": [
+      {
+        "letter": "o",
+        "say": "ooo",
+        "key": "o"
+      },
+      {
+        "letter": "p",
+        "say": "p",
+        "key": "p"
+      },
+      {
+        "letter": "t",
+        "say": "t",
+        "key": "t"
+      },
+      {
+        "letter": "m",
+        "say": "mmm",
+        "key": "m"
+      },
+      {
+        "letter": "n",
+        "say": "nnn",
+        "key": "n"
+      }
+    ],
+    "builds": [
+      {
+        "label": "pot",
+        "key": "pot",
+        "parts": "/p/ /o/ /t/"
+      },
+      {
+        "label": "top",
+        "key": "top",
+        "parts": "/t/ /o/ /p/"
+      },
+      {
+        "label": "mop",
+        "key": "mop",
+        "parts": "/m/ /o/ /p/"
+      },
+      {
+        "label": "on",
+        "key": "on",
+        "parts": "/o/ /n/"
+      }
+    ],
+    "blends": [
+      {
+        "label": "pot",
+        "key": "pot_blend"
+      },
+      {
+        "label": "top",
+        "key": "top_blend"
+      },
+      {
+        "label": "mop",
+        "key": "mop_blend"
+      },
+      {
+        "label": "on",
+        "key": "on_blend"
+      }
+    ],
+    "script": [
+      "New short /o/.",
+      "Words pot top mop on.",
+      "Blend slow → pot pot fast.",
+      "Done when she walks off."
+    ]
+  },
+  "8": {
+    "title": "Lesson 8 · g",
+    "subtitle": "dog · dig · got · pig",
+    "sounds": [
+      {
+        "letter": "g",
+        "say": "g",
+        "key": "g"
+      },
+      {
+        "letter": "o",
+        "say": "ooo",
+        "key": "o"
+      },
+      {
+        "letter": "i",
+        "say": "iii",
+        "key": "i"
+      },
+      {
+        "letter": "d",
+        "say": "d",
+        "key": "d"
+      },
+      {
+        "letter": "p",
+        "say": "p",
+        "key": "p"
+      }
+    ],
+    "builds": [
+      {
+        "label": "dog",
+        "key": "dog",
+        "parts": "/d/ /o/ /g/"
+      },
+      {
+        "label": "dig",
+        "key": "dig",
+        "parts": "/d/ /i/ /g/"
+      },
+      {
+        "label": "got",
+        "key": "got",
+        "parts": "/g/ /o/ /t/"
+      },
+      {
+        "label": "pig",
+        "key": "pig",
+        "parts": "/p/ /i/ /g/"
+      }
+    ],
+    "blends": [
+      {
+        "label": "dog",
+        "key": "dog_blend"
+      },
+      {
+        "label": "dig",
+        "key": "dig_blend"
+      },
+      {
+        "label": "got",
+        "key": "got_blend"
+      },
+      {
+        "label": "pig",
+        "key": "pig_blend"
+      }
+    ],
+    "script": [
+      "New hard /g/ (not soft).",
+      "Build dog dig got pig.",
+      "Blend slow → word word fast.",
+      "Stop when she stops."
+    ]
+  },
+  "9": {
+    "title": "Lesson 9 · c",
+    "subtitle": "cat · can · cap · cot",
+    "sounds": [
+      {
+        "letter": "c",
+        "say": "c",
+        "key": "c"
+      },
+      {
+        "letter": "a",
+        "say": "aaa",
+        "key": "a"
+      },
+      {
+        "letter": "o",
+        "say": "ooo",
+        "key": "o"
+      },
+      {
+        "letter": "t",
+        "say": "t",
+        "key": "t"
+      },
+      {
+        "letter": "n",
+        "say": "nnn",
+        "key": "n"
+      },
+      {
+        "letter": "p",
+        "say": "p",
+        "key": "p"
+      }
+    ],
+    "builds": [
+      {
+        "label": "cat",
+        "key": "cat",
+        "parts": "/c/ /a/ /t/"
+      },
+      {
+        "label": "can",
+        "key": "can",
+        "parts": "/c/ /a/ /n/"
+      },
+      {
+        "label": "cap",
+        "key": "cap",
+        "parts": "/c/ /a/ /p/"
+      },
+      {
+        "label": "cot",
+        "key": "cot",
+        "parts": "/c/ /o/ /t/"
+      }
+    ],
+    "blends": [
+      {
+        "label": "cat",
+        "key": "cat_blend"
+      },
+      {
+        "label": "can",
+        "key": "can_blend"
+      },
+      {
+        "label": "cap",
+        "key": "cap_blend"
+      },
+      {
+        "label": "cot",
+        "key": "cot_blend"
+      }
+    ],
+    "script": [
+      "New hard /c/ (like /k/).",
+      "Words cat can cap cot.",
+      "Blend slow, then cat cat fast.",
+      "One specific praise."
+    ]
+  },
+  "10": {
+    "title": "Lesson 10 · e",
+    "subtitle": "pet · pen · ten · set",
+    "sounds": [
+      {
+        "letter": "e",
+        "say": "eee",
+        "key": "e"
+      },
+      {
+        "letter": "p",
+        "say": "p",
+        "key": "p"
+      },
+      {
+        "letter": "t",
+        "say": "t",
+        "key": "t"
+      },
+      {
+        "letter": "n",
+        "say": "nnn",
+        "key": "n"
+      },
+      {
+        "letter": "s",
+        "say": "sss",
+        "key": "s"
+      }
+    ],
+    "builds": [
+      {
+        "label": "pet",
+        "key": "pet",
+        "parts": "/p/ /e/ /t/"
+      },
+      {
+        "label": "pen",
+        "key": "pen",
+        "parts": "/p/ /e/ /n/"
+      },
+      {
+        "label": "ten",
+        "key": "ten",
+        "parts": "/t/ /e/ /n/"
+      },
+      {
+        "label": "set",
+        "key": "set",
+        "parts": "/s/ /e/ /t/"
+      }
+    ],
+    "blends": [
+      {
+        "label": "pet",
+        "key": "pet_blend"
+      },
+      {
+        "label": "pen",
+        "key": "pen_blend"
+      },
+      {
+        "label": "ten",
+        "key": "ten_blend"
+      },
+      {
+        "label": "set",
+        "key": "set_blend"
+      }
+    ],
+    "script": [
+      "New short /e/.",
+      "Build pet pen ten set.",
+      "Blend slow → word word.",
+      "Done when she walks off."
+    ]
+  },
+  "11": {
+    "title": "Lesson 11 · u",
+    "subtitle": "cup · cut · up · sun",
+    "sounds": [
+      {
+        "letter": "u",
+        "say": "uuu",
+        "key": "u"
+      },
+      {
+        "letter": "c",
+        "say": "c",
+        "key": "c"
+      },
+      {
+        "letter": "p",
+        "say": "p",
+        "key": "p"
+      },
+      {
+        "letter": "t",
+        "say": "t",
+        "key": "t"
+      },
+      {
+        "letter": "s",
+        "say": "sss",
+        "key": "s"
+      },
+      {
+        "letter": "n",
+        "say": "nnn",
+        "key": "n"
+      }
+    ],
+    "builds": [
+      {
+        "label": "cup",
+        "key": "cup",
+        "parts": "/c/ /u/ /p/"
+      },
+      {
+        "label": "cut",
+        "key": "cut",
+        "parts": "/c/ /u/ /t/"
+      },
+      {
+        "label": "up",
+        "key": "up",
+        "parts": "/u/ /p/"
+      },
+      {
+        "label": "sun",
+        "key": "sun",
+        "parts": "/s/ /u/ /n/"
+      }
+    ],
+    "blends": [
+      {
+        "label": "cup",
+        "key": "cup_blend"
+      },
+      {
+        "label": "cut",
+        "key": "cut_blend"
+      },
+      {
+        "label": "up",
+        "key": "up_blend"
+      },
+      {
+        "label": "sun",
+        "key": "sun_blend"
+      }
+    ],
+    "script": [
+      "New short /u/.",
+      "Words cup cut up sun.",
+      "Blend slow, then cup cup fast.",
+      "Pick 2–3 if she’s tired."
+    ]
+  },
+  "12": {
+    "title": "Lesson 12 · b",
+    "subtitle": "bat · big · bag · bus",
+    "sounds": [
+      {
+        "letter": "b",
+        "say": "b",
+        "key": "b"
+      },
+      {
+        "letter": "a",
+        "say": "aaa",
+        "key": "a"
+      },
+      {
+        "letter": "i",
+        "say": "iii",
+        "key": "i"
+      },
+      {
+        "letter": "u",
+        "say": "uuu",
+        "key": "u"
+      },
+      {
+        "letter": "t",
+        "say": "t",
+        "key": "t"
+      },
+      {
+        "letter": "g",
+        "say": "g",
+        "key": "g"
+      },
+      {
+        "letter": "s",
+        "say": "sss",
+        "key": "s"
+      }
+    ],
+    "builds": [
+      {
+        "label": "bat",
+        "key": "bat",
+        "parts": "/b/ /a/ /t/"
+      },
+      {
+        "label": "big",
+        "key": "big",
+        "parts": "/b/ /i/ /g/"
+      },
+      {
+        "label": "bag",
+        "key": "bag",
+        "parts": "/b/ /a/ /g/"
+      },
+      {
+        "label": "bus",
+        "key": "bus",
+        "parts": "/b/ /u/ /s/"
+      }
+    ],
+    "blends": [
+      {
+        "label": "bat",
+        "key": "bat_blend"
+      },
+      {
+        "label": "big",
+        "key": "big_blend"
+      },
+      {
+        "label": "bag",
+        "key": "bag_blend"
+      },
+      {
+        "label": "bus",
+        "key": "bus_blend"
+      }
+    ],
+    "script": [
+      "New /b/.",
+      "Build bat big bag bus.",
+      "Blend slow → bat bat fast.",
+      "Stop when she stops."
+    ]
+  },
+  "13": {
+    "title": "Lesson 13 · f",
+    "subtitle": "fan · fin · fat · if",
+    "sounds": [
+      {
+        "letter": "f",
+        "say": "fff",
+        "key": "f"
+      },
+      {
+        "letter": "a",
+        "say": "aaa",
+        "key": "a"
+      },
+      {
+        "letter": "i",
+        "say": "iii",
+        "key": "i"
+      },
+      {
+        "letter": "n",
+        "say": "nnn",
+        "key": "n"
+      },
+      {
+        "letter": "t",
+        "say": "t",
+        "key": "t"
+      }
+    ],
+    "builds": [
+      {
+        "label": "fan",
+        "key": "fan",
+        "parts": "/f/ /a/ /n/"
+      },
+      {
+        "label": "fin",
+        "key": "fin",
+        "parts": "/f/ /i/ /n/"
+      },
+      {
+        "label": "fat",
+        "key": "fat",
+        "parts": "/f/ /a/ /t/"
+      },
+      {
+        "label": "if",
+        "key": "if",
+        "parts": "/i/ /f/"
+      }
+    ],
+    "blends": [
+      {
+        "label": "fan",
+        "key": "fan_blend"
+      },
+      {
+        "label": "fin",
+        "key": "fin_blend"
+      },
+      {
+        "label": "fat",
+        "key": "fat_blend"
+      },
+      {
+        "label": "if",
+        "key": "if_blend"
+      }
+    ],
+    "script": [
+      "New continuous /f/ — fff.",
+      "Words fan fin fat if.",
+      "Blend slow, then fan fan.",
+      "One specific praise."
+    ]
+  },
+  "14": {
+    "title": "Lesson 14 · l",
+    "subtitle": "lap · lip · lot · pal",
+    "sounds": [
+      {
+        "letter": "l",
+        "say": "lll",
+        "key": "l"
+      },
+      {
+        "letter": "a",
+        "say": "aaa",
+        "key": "a"
+      },
+      {
+        "letter": "i",
+        "say": "iii",
+        "key": "i"
+      },
+      {
+        "letter": "o",
+        "say": "ooo",
+        "key": "o"
+      },
+      {
+        "letter": "p",
+        "say": "p",
+        "key": "p"
+      },
+      {
+        "letter": "t",
+        "say": "t",
+        "key": "t"
+      }
+    ],
+    "builds": [
+      {
+        "label": "lap",
+        "key": "lap",
+        "parts": "/l/ /a/ /p/"
+      },
+      {
+        "label": "lip",
+        "key": "lip",
+        "parts": "/l/ /i/ /p/"
+      },
+      {
+        "label": "lot",
+        "key": "lot",
+        "parts": "/l/ /o/ /t/"
+      },
+      {
+        "label": "pal",
+        "key": "pal",
+        "parts": "/p/ /a/ /l/"
+      }
+    ],
+    "blends": [
+      {
+        "label": "lap",
+        "key": "lap_blend"
+      },
+      {
+        "label": "lip",
+        "key": "lip_blend"
+      },
+      {
+        "label": "lot",
+        "key": "lot_blend"
+      },
+      {
+        "label": "pal",
+        "key": "pal_blend"
+      }
+    ],
+    "script": [
+      "New continuous /l/ — lll.",
+      "Build lap lip lot pal.",
+      "Blend slow → word word.",
+      "Done when she walks off."
+    ]
+  },
+  "15": {
+    "title": "Lesson 15 · mixed review",
+    "subtitle": "dog · cat · pet · cup · bat",
+    "sounds": [
+      {
+        "letter": "g",
+        "say": "g",
+        "key": "g"
+      },
+      {
+        "letter": "c",
+        "say": "c",
+        "key": "c"
+      },
+      {
+        "letter": "e",
+        "say": "eee",
+        "key": "e"
+      },
+      {
+        "letter": "u",
+        "say": "uuu",
+        "key": "u"
+      },
+      {
+        "letter": "b",
+        "say": "b",
+        "key": "b"
+      },
+      {
+        "letter": "a",
+        "say": "aaa",
+        "key": "a"
+      }
+    ],
+    "builds": [
+      {
+        "label": "dog",
+        "key": "dog",
+        "parts": "/d/ /o/ /g/"
+      },
+      {
+        "label": "cat",
+        "key": "cat",
+        "parts": "/c/ /a/ /t/"
+      },
+      {
+        "label": "pet",
+        "key": "pet",
+        "parts": "/p/ /e/ /t/"
+      },
+      {
+        "label": "cup",
+        "key": "cup",
+        "parts": "/c/ /u/ /p/"
+      },
+      {
+        "label": "bat",
+        "key": "bat",
+        "parts": "/b/ /a/ /t/"
+      }
+    ],
+    "blends": [
+      {
+        "label": "dog",
+        "key": "dog_blend"
+      },
+      {
+        "label": "cat",
+        "key": "cat_blend"
+      },
+      {
+        "label": "pet",
+        "key": "pet_blend"
+      },
+      {
+        "label": "cup",
+        "key": "cup_blend"
+      },
+      {
+        "label": "bat",
+        "key": "bat_blend"
+      }
+    ],
+    "script": [
+      "Stretch review — warm up key letters.",
+      "Blend the five words slow → fast-fast.",
+      "Stop when she stops.",
+      "One specific praise: you stretched /g/ then said dog dog!"
+    ]
+  }
+}

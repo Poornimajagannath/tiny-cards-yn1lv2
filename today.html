@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="robots" content="noindex,nofollow"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Samaya today</title>
+<style>
+  body { margin:0; min-height:100dvh; background:#f6e2b8; color:#3a2412; font:20px/1.25 system-ui, sans-serif; }
+  main { max-width:26rem; margin:0 auto; min-height:100dvh; display:flex; flex-direction:column; padding:1rem .9rem 1.2rem; box-sizing:border-box; }
+  .top { display:flex; justify-content:space-between; align-items:center; font-size:.85rem; }
+  h1 { font-size:1.15rem; margin:.4rem 0 .8rem; }
+  #card { flex:1; background:#fffaf1; border-radius:28px; padding:1.4rem 1.1rem; display:flex; flex-direction:column; justify-content:center; box-shadow:0 8px 0 #e2b56a; }
+  .emoji { font-size:4.5rem; text-align:center; }
+  #kicker { text-align:center; letter-spacing:.08em; text-transform:uppercase; font-size:.75rem; color:#8a5a28; margin:.4rem 0; }
+  #line { text-align:center; font-size:1.55rem; margin:.2rem 0 .8rem; }
+  #go { display:none; text-align:center; background:#6f8f4e; color:#fff; text-decoration:none; border-radius:999px; padding:.8rem 1rem; font-size:1.15rem; }
+  .nav { display:flex; gap:.5rem; margin-top:.8rem; }
+  button { flex:1; font:inherit; border:0; border-radius:999px; padding:.85rem; background:#fffaf1; }
+  #nextc { background:#3a2412; color:#fffaf1; }
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><span id="meta"></span><span id="count"></span></div>
+  <h1 id="title">Today</h1>
+  <div id="card">
+    <div class="emoji" id="emoji">✦</div>
+    <div id="kicker"></div>
+    <p id="line"></p>
+    <a id="go" href="#"></a>
+  </div>
+  <div class="nav">
+    <button type="button" id="backc">Back</button>
+    <button type="button" id="nextc">Next</button>
+  </div>
+</main>
+<script>
+const WORD = "./?mode=first-sound";
+const LOOK = "./math/?mode=look";
+const COUNT = "./math/?mode=count";
+// Mon-first, 4 weeks. Week 1 Monday = Sep 28 2026 so Oct 3 is movement mirror.
+const days = [
+["Notice · Color detective","Pick one color. Hunt five things. Group light and dark. Draw the strangest find. Ask: What did you notice that I missed?","look","Look on 1, two taps.","word","First sound, two taps."],
+["Notice · Sound map","Sit quiet for one minute. Mark each sound with a line, dot, or scribble. Make the sounds together. Ask: Near or far?","count","Two spoons, count 1–2.","word","First sound, two taps."],
+["Notice · Texture studio","Paper over a safe texture. Rub with the side of a crayon. Combine three rubbings into a creature.","look","Finger-trace 2, then Look on 2.","word","One known word, slow then fast. No phone required."],
+["Notice · Sink or float","Four safe objects. Predict, test in a shallow bowl, sort. Change one thing and test again.","count","Count the floaters, stay under 5.","word","First sound, two taps."],
+["Notice · Shadow shapes","Flashlight, hands or a toy. Move nearer and farther. Tell a short shadow story. Ask: How can we make it huge?","look","Look on how many shadows, stay 1–5.","word","First sound, two taps."],
+["Notice · Movement mirror","Take turns: slow, fast, high, low, twisty, tiny. Ask: Can your body show a feeling?","count","Count the moves you copy, up to 3.","skip","Skip letters. She is moving."],
+["Notice · Tiny museum","She chooses three objects, names each one, and tells a tiny story. Ask: What should visitors know?","count","Count the three objects once.","word","First sound of one name she said."],
+["Imagine · A box becomes","One cardboard box and tape. It can be a cave, a bus, a kitchen. Ask: What else could it be?","count","Count corners you can see, up to 4.","word","First sound, two taps."],
+["Imagine · Finish my squiggle","You draw one loose line. She turns it into a picture. Switch. Name both.","look","Trace 1 or 2 for how many pictures.","skip","Skip letters if she is still drawing."],
+["Imagine · Story trio","Three household objects. Beginning, a problem, a surprise ending. Ask: Then what happened?","count","Count the three objects.","word","First sound, two taps."],
+["Imagine · Kitchen band","Three safe sound-makers. A beat, a quiet part, an ending. Ask: How do we know the song is done?","count","Count three beats together.","skip","Skip the phone."],
+["Imagine · Pretend restaurant","Draw a tiny menu. Take turns as cook and guest. One silly dish, one problem.","count","Count spoons or plates, 1–3.","word","First sound, two taps."],
+["Imagine · Adventure walk","You start: cross a river, tiptoe past a bear. She adds the next scene.","count","Count silly steps, up to 5.","skip","Skip the phone. You are walking."],
+["Imagine · Change the ending","A familiar picture book. Stop before the end. Act two endings, then read the real one.","count","Count the two endings.","word","One word from the book, slow then fast."],
+["Build · Tall tower","Blocks or boxes. Before a try: how tall? When it falls, change one thing only.","count","Count blocks, stop at 5.","word","First sound, two taps."],
+["Build · Bridge for a toy","Cardboard, blocks, tape. A toy crosses a gap. Try a wider gap once.","count","Count tries, up to 3.","skip","Skip letters if the bridge is the whole sit."],
+["Build · Ramp lab","Cardboard on books. Roll a ball or car. Change the height once. Ask: What changed the speed?","count","Count rolls, up to 5.","word","First sound, two taps."],
+["Build · Animal shelter","A home for one stuffed animal: a door and a bed. Ask: What does your animal need?","count","Count the parts she added.","word","First sound of the animal name."],
+["Build · Make it move","One chain: a ball knocks a block, or water turns something. Add one step only if she asks.","count","Count the steps, up to 3.","word","First sound, two taps."],
+["Build · Living-room course","Together: step over, crawl under, balance, a finish. Ask: Easier or harder?","count","Count the stations, up to 4.","skip","Skip the phone."],
+["Build · Redesign","She picks one build from the week. Change one thing. Compare the two.","look","Look on 1: one change.","word","First sound, two taps."],
+["Express · Three colors","Only three colors. Mix, give it a title. You describe what you see. Do not guess her picture.","count","Count the three colors.","word","First sound, two taps."],
+["Express · Family story","Toys or family. Where they go, what goes wrong, how they help. Ask: How is the character feeling?","count","Count characters, up to 3.","word","First sound of one name."],
+["Express · Rhythm talk","You tap a short rhythm. She answers with her own. Trade who leads.","count","Count the taps, up to 4.","skip","Skip letters."],
+["Express · Dough invention","Play dough: a tool, a creature, or a food. Ask: What can it do?","count","Count marks she makes, up to 5.","word","First sound, two taps."],
+["Express · Puppet problem","Two puppets want the same seat. She invents up to three solutions.","count","Count two puppets, then her ideas.","skip","Skip the phone if the puppets hold her."],
+["Express · Nature line","Safe fallen bits only. She lines them up by a rule she invents.","count","Count items, up to 5.","word","First sound, two taps."],
+["Express · Wonder gallery","She picks favorites from the month and gives you a short tour. Ask: What are you proud of trying?","count","Count what she chose.","word","One word she says, slow then fast."]
+];
+
+const emotions = ["happy","sad","mad","surprised","proud","scared","calm","silly"];
+const routines = [
+"Shoes by the door. She puts one pair away.",
+"Pour a little water into a cup. She drinks or waters a plant.",
+"Wash hands: wet, soap, rinse, dry. You do it beside her.",
+"One plate to the table. She carries it with two hands.",
+"Coat or sweater on a hook.",
+"Wipe one spot on the table.",
+"Goodbye practice: hug, wave, one sentence, door stays closed."
+];
+const lionWeek = {
+  "2026-10-14": "Name puzzle: lay S-A-M-A-Y-A on the matching letters, then say each sound.",
+  // Fairview Lion plan week of Oct 5–9 2026 — blocks investigation
+  "2026-10-05": "Blocks week: hold one block. What is this called?",
+  "2026-10-06": "Blocks week: how do you play with these? Build one tiny thing.",
+  "2026-10-07": "Blocks week: find three blocks in the room. Same or different?",
+  "2026-10-08": "Blocks week: what do you want to find out about blocks?",
+  "2026-10-09": "Blocks week: wooden block hunt. Where does this one live at school?"
+};
+const lion = [
+"Say her name, then find the first sound.",
+"Count real things toward 1–10. Stop at 5 if she wanders.",
+"One letter and its sound. Trace it once in the air.",
+"One shape in the room. Circle, square, or triangle.",
+"Show and tell: she holds one object and says one sentence.",
+"Circle time at home: sit, one song, then up.",
+"One job she does herself. Shoes, cup, or backpack."
+]
+const kannada = [
+"Kannada count: ondu, eraḍu, mūru. She echoes. Stop at three.",
+"Song: sing one line of a lullaby she knows (Jo jo, or any Amma song). She hums back.",
+"Story, four sentences: “Samaya bandalu. Aane banditu. Aane duḍḍitu. Samaya navalu.” She can change the animal.",
+"Song: clap Ondu eraḍu mūru while walking.",
+"Word play: mara, mane, amma. She picks one and you say a tiny sentence with it.",
+"Story: simha (lion) and a mouse. One kind act. She shows it with toys.",
+"Song: a festival or home song she already asks for. One verse only."
+];
+const BASE = new Date(2026, 8, 28, 12, 0, 0); // Mon Sep 28 2026
+let extra = 0;
+let step = 0;
+function cardsFor(i, d, t) {
+  const emo = emotions[i % emotions.length];
+  const numHref = d[2] === "look" ? LOOK : COUNT;
+  const play = d[0].split("·").pop().trim();
+  const key = t.getFullYear() + "-" + String(t.getMonth()+1).padStart(2,"0") + "-" + String(t.getDate()).padStart(2,"0");
+  const lionLine = lionWeek[key] || lion[i % lion.length];
+  return [
+    ["✦","Play", play],
+    ["🙂", emo, "Make this face. One time."],
+    ["🏠","Home", routines[i % routines.length].split(".")[0]],
+    ["🦁","Lions", lionLine],
+    ["123","Numbers", d[3].split(".")[0], numHref, "Numbers"],
+    ["Aa","Letters", "First sound. Two taps.", WORD, "Letters"],
+    ["ಕ","Kannada", kannada[i % kannada.length].split(".")[0]]
+  ];
+}
+function render() {
+  const t = new Date();
+  t.setDate(t.getDate() + extra);
+  t.setHours(12,0,0,0);
+  let i = Math.round((t - BASE) / 86400000);
+  i = ((i % 28) + 28) % 28;
+  const pack = cardsFor(i, days[i], t);
+  if (step >= pack.length) step = 0;
+  if (step < 0) step = pack.length - 1;
+  const c = pack[step];
+  document.getElementById("title").textContent = days[i][0].split("·")[0].trim();
+  document.getElementById("meta").textContent = t.toLocaleDateString("en-US", { weekday:"short", month:"short", day:"numeric" });
+  document.getElementById("count").textContent = (step+1) + " / " + pack.length;
+  document.getElementById("emoji").textContent = c[0];
+  document.getElementById("kicker").textContent = c[1];
+  document.getElementById("line").textContent = c[2];
+  const go = document.getElementById("go");
+  if (c[3]) { go.style.display = "block"; go.href = c[3]; go.textContent = c[4]; }
+  else go.style.display = "none";
+}
+document.getElementById("nextc").onclick = () => { step += 1; render(); };
+document.getElementById("backc").onclick = () => { step -= 1; render(); };
+render();
+</script>
+</body>
+</html>

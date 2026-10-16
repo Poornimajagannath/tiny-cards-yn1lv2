@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="robots" content="noindex,nofollow"/><script src="js/snd0.js"></script><script src="js/snd1.js"></script><script src="js/snd2.js"></script><script src="js/snd3.js"></script><script src="js/snd4.js"></script><script src="js/snd5.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<title>Samaya WordDeck</title>
+<link rel="stylesheet" href="./css/shell.css"/>
+<style>
+.item{margin:12px 0 14px;text-align:center}
+.letter-row{display:flex;align-items:center;justify-content:center;gap:10px}
+.letter{font-size:3.6rem}
+.speak{width:44px;height:44px;font-size:1.2rem}
+.track-wrap{position:relative;height:52px;margin:8px 12px 0;touch-action:none;user-select:none;-webkit-user-select:none}
+.track{position:absolute;left:10%;right:10%;top:50%;height:12px;margin-top:-6px;background:rgba(168,130,60,.28);border-radius:999px}
+.dot{position:absolute;right:10%;top:50%;width:16px;height:16px;margin:-8px -8px 0 0;background:var(--ink);border-radius:50%}
+.knob{position:absolute;top:50%;left:10%;width:48px;height:48px;margin:-24px 0 0 -24px;background:var(--turmeric);border-radius:50%;color:#fffdf6;display:flex;align-items:center;justify-content:center;font-size:1.3rem;z-index:3}
+.knob.ok{background:var(--ok)}
+.status{min-height:1.3em;color:var(--muted);font-size:.9rem;margin-top:4px}
+
+.blend-panel{border-radius:20px;padding:16px;margin-top:8px;width:100%;max-width:100%}
+.blend-panel > .blend-btn{display:grid}
+.blend-btn{
+  background:var(--paper-card);border:2px solid rgba(168,130,60,.45);border-radius:20px;padding:18px 16px;
+  font:inherit;cursor:pointer;grid-template-columns:auto minmax(0,1fr);align-items:center;
+  width:100%;max-width:100%;gap:12px;
+}
+.blend-btn:active{transform:scale(.99)}
+.blend-btn .w{font-size:2.6rem;font-weight:800;line-height:1;min-width:0;letter-spacing:.03em}
+.blend-btn .tag{font-size:.85rem;color:var(--saffron);font-weight:700;text-align:right;min-width:0;overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<div id="home">
+  <h1>WordDeck</h1>
+  <p class="sub">Letters and words. Stop when she stops.</p>
+  <div class="editnote">Tap a lesson, then 🔊. Turn off silent switch if quiet.</div>
+  <div class="section-label">Play</div>
+  <button class="card" type="button" id="open-first-sound">
+    <h2>First sound</h2>
+    <p>Hear the word. Tap the letter it starts with.</p>
+  </button>
+  <div class="section-label">Lessons</div>
+  <div id="cards"></div>
+</div>
+<div id="lesson" class="hidden">
+  <button class="back" type="button" id="back">← WordDeck</button>
+  <h1 id="title"></h1>
+  <p class="sub" id="subtitle"></p>
+  <div class="section-label">1 · Sounds</div>
+  <div class="panel" id="letters"></div>
+  <div class="section-label">2 · Word</div>
+  <div class="deck" id="build">
+    <div class="deck-viewport" id="deck-viewport"></div>
+    <div class="deck-nav">
+      <button type="button" class="deck-chev" id="deck-prev" aria-label="Previous word">‹</button>
+      <div class="deck-dots" id="deck-dots"></div>
+      <button type="button" class="deck-chev" id="deck-next" aria-label="Next word">›</button>
+    </div>
+  </div>
+  <div class="section-label">3 · Blend → fast</div>
+  <div class="blend-panel">
+    <button type="button" class="blend-btn" id="blend"></button>
+  </div>
+  <p class="hint">Blend slow, then the word fast twice.</p>
+</div>
+<div id="first-sound" class="hidden">
+  <button class="back" type="button" id="fs-back">← WordDeck</button>
+  <h1 id="fs-title">First sound</h1>
+  <p class="sub" id="fs-sub">Hear the word. Tap the letter it starts with.</p>
+  <div id="fs-play">
+    <div class="fs-prompt" id="fs-prompt" role="button" aria-label="Play word">
+      <button type="button" class="deck-speak" id="fs-speak" aria-label="Play word">🔊</button>
+      <div class="fs-word" id="fs-word"></div>
+    </div>
+    <div class="fs-letters" id="fs-letters"></div>
+    <p class="status" id="fs-status">What sound first?</p>
+  </div>
+  <div id="fs-enough" class="enough hidden">
+    <h2>That’s enough</h2>
+    <p id="fs-enough-copy"></p>
+    <div class="enough-actions">
+      <button type="button" id="fs-keep">A few more</button>
+      <button type="button" class="primary" id="fs-home">Done</button>
+    </div>
+  </div>
+  <div class="sit-bar">
+    <span class="dots" id="fs-sit-label">Just starting</span>
+    <button type="button" class="sit-done" id="fs-done">We’re done</button>
+  </div>
+</div>
+<script type="module">
+import { openLibrary, openLesson, openFirstSound, applyFocusBoot } from './js/public.js?v=8';
+
+const homeRoot = document.getElementById('home');
+const lessonRoot = document.getElementById('lesson');
+const firstSoundRoot = document.getElementById('first-sound');
+
+await openLibrary({ homeRoot, lessonRoot, firstSoundRoot, cardHost: document.getElementById('cards') });
+
+// ?focus= / ?lesson= → persist focus + open; bare boot → open today's focus if set
+applyFocusBoot(location.search);
+// openLesson remains available for console / routine tools
+window.openLesson = openLesson;
+window.openFirstSound = openFirstSound;
+</script>
+</body>
+</html>
