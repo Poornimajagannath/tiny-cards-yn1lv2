@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="robots" content="noindex,nofollow"/><script src="../js/snd0.js"></script><script src="../js/snd1.js"></script><script src="../js/snd2.js"></script><script src="../js/snd3.js"></script><script src="../js/snd4.js"></script><script src="../js/snd5.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<title>Samaya NumberDeck</title>
+<link rel="stylesheet" href="../css/shell.css"/>
+<style>
+.look-card{
+  position:relative;min-height:240px;
+  border-color:var(--wood-edge);
+  box-shadow:0 2px 0 var(--wood-edge), 0 3px 8px rgba(80,50,10,.07);
+}
+.digit{font-size:4.6rem}
+.digit.mini{font-size:2.4rem}
+.tower{
+  display:flex;flex-direction:column-reverse;align-items:center;gap:5px;
+  min-height:40px;justify-content:flex-start;
+}
+.block{
+  width:78px;height:32px;border-radius:7px;border:1.5px solid rgba(90,50,22,.4);
+  background-image:var(--wood-grain),linear-gradient(90deg, rgba(255,255,255,.3), transparent 42%, rgba(80,40,10,.18));
+  background-blend-mode:multiply,overlay;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 2px 0 rgba(90,50,22,.22);
+  padding:0;cursor:pointer;
+}
+div.block{cursor:default}
+
+.tray{
+  min-height:220px;border:2.5px dashed rgba(138,85,52,.45);border-radius:22px;
+  padding:16px;display:flex;align-items:flex-end;justify-content:center;margin:8px 0 12px;
+}
+.add-one{
+  width:100%;min-height:56px;border-radius:999px;border:2.5px solid var(--wood-edge);
+  background:var(--paper-card);font:inherit;font-size:1.15rem;font-weight:800;cursor:pointer;color:var(--ink);
+}
+.add-one:active{transform:scale(.99)}
+
+.together{display:flex;align-items:flex-end;justify-content:center;gap:14px;margin:8px 0 16px;flex-wrap:wrap}
+.together.joined{flex-direction:column;align-items:center}
+.group{
+  display:flex;flex-direction:column;align-items:center;gap:8px;border-radius:18px;
+  padding:12px 16px;border:2px solid rgba(138,85,52,.38);
+  box-shadow:0 1px 0 rgba(90,50,22,.12);
+}
+.and{font-weight:700;color:var(--muted);padding-bottom:36px}
+.count-head{text-align:center}
+</style>
+</head>
+<body>
+<div id="home">
+  <h1>NumberDeck</h1>
+  <p class="sub">Blocks and digits. No faces. Stop when she stops.</p>
+  <div class="editnote">Tap a mode. The phone will talk. Turn off silent switch if quiet.</div>
+  <div class="section-label">Play</div>
+  <button class="card" type="button" data-mode="look">
+    <h2>Look · 1 to 10</h2>
+    <p>A digit and a tower. 1–5 first, then 6–10.</p>
+  </button>
+  <button class="card" type="button" data-mode="count">
+    <h2>Count</h2>
+    <p>One tap, one block. That is the number.</p>
+  </button>
+  <button class="card" type="button" data-mode="together">
+    <h2>Together</h2>
+    <p>Two little towers become one.</p>
+  </button>
+</div>
+<div id="mode" class="hidden">
+  <button class="back" type="button" id="mode-back">← NumberDeck</button>
+  <h1 id="mode-title"></h1>
+  <p class="sub" id="mode-sub"></p>
+  <div id="math-play"></div>
+  <div id="math-enough" class="enough hidden">
+    <h2>That’s enough</h2>
+    <p id="math-enough-copy"></p>
+    <div class="enough-actions">
+      <button type="button" id="math-keep">A few more</button>
+      <button type="button" class="primary" id="math-home">Done</button>
+    </div>
+  </div>
+  <div class="sit-bar">
+    <span class="dots" id="math-sit-label">Just starting</span>
+    <button type="button" class="sit-done" id="math-done">We’re done</button>
+  </div>
+</div>
+<script type="module">
+import { NumberApp } from './js/number-app.js';
+const app = new NumberApp({ root: document.body });
+app.boot(location.search);
+</script>
+</body>
+</html>
