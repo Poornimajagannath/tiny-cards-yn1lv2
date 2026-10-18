@@ -14,6 +14,7 @@
   #kicker { text-align:center; letter-spacing:.08em; text-transform:uppercase; font-size:.75rem; color:#8a5a28; margin:.4rem 0; }
   #line { text-align:center; font-size:1.55rem; margin:.2rem 0 .8rem; }
   #tag { text-align:center; font-size:.7rem; color:#8a5a28; opacity:.75; margin:0 0 .7rem; min-height:.9rem; }
+  #gum { display:none; text-align:center; color:#3a2412; text-decoration:none; border:2px solid #3a2412; border-radius:999px; padding:.7rem 1rem; font-size:1.05rem; margin-top:.55rem; }
   #go { display:none; text-align:center; background:#6f8f4e; color:#fff; text-decoration:none; border-radius:999px; padding:.8rem 1rem; font-size:1.15rem; }
   .nav { display:flex; gap:.5rem; margin-top:.8rem; }
   button { flex:1; font:inherit; border:0; border-radius:999px; padding:.85rem; background:#fffaf1; }
@@ -30,6 +31,7 @@
     <p id="line"></p>
     <div id="tag"></div>
     <a id="go" href="#"></a>
+    <a id="gum" href="./gumball.html">Gumball machine</a>
   </div>
   <div class="nav">
     <button type="button" id="backc">Back</button>
@@ -114,6 +116,7 @@ const BASE = new Date(2026, 8, 28, 12, 0, 0); // Mon Sep 28 2026
 // Topic tags are exact Marble topic names (withmarbleapp/os-taxonomy, ODbL 1.0 / CC BY-SA 4.0).
 const TOGETHER = "./math/?mode=together";
 const NEWBASE = new Date(2026, 9, 19, 12, 0, 0); // Mon Oct 19 2026
+const GUM = new Set(["Counting objects to 20","One More Each Time"]); // topics that also link the gumball machine
 const P = [ // Play: shapes, position, measuring, science
 ["Positional Language","Hide a toy; she tells you where it is: on, under, behind, or next to."],
 ["2-D shapes","Shape hunt: find a circle, a square, and a triangle in the house."],
@@ -242,7 +245,7 @@ function newCardsFor(j, i, t) {
     ["🙂","Feelings", F[j][1], null, null, F[j][0]],
     ["🏠","Home", routines[i % routines.length].split(".")[0]],
     ["🦁","Lions", lionLine],
-    ["123","Numbers", NUM[j][1], NUM[j][2], "Numbers", NUM[j][0]],
+    ["123","Numbers", NUM[j][1], NUM[j][2], "Numbers", NUM[j][0], GUM.has(NUM[j][0])],
     ["Bb","Letters", LET[j][1], WORD, "Letters", LET[j][0]],
     ["ಕ","Kannada", kannada[i % kannada.length].split(".")[0]]
   ];
@@ -290,6 +293,7 @@ function render() {
   const go = document.getElementById("go");
   if (c[3]) { go.style.display = "block"; go.href = c[3]; go.textContent = c[4]; }
   else go.style.display = "none";
+  document.getElementById("gum").style.display = c[6] ? "block" : "none";
 }
 document.getElementById("nextc").onclick = () => { step += 1; render(); };
 document.getElementById("backc").onclick = () => { step -= 1; render(); };
