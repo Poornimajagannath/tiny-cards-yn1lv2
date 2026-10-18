@@ -13,6 +13,7 @@
   .emoji { font-size:4.5rem; text-align:center; }
   #kicker { text-align:center; letter-spacing:.08em; text-transform:uppercase; font-size:.75rem; color:#8a5a28; margin:.4rem 0; }
   #line { text-align:center; font-size:1.55rem; margin:.2rem 0 .8rem; }
+  #tag { text-align:center; font-size:.7rem; color:#8a5a28; opacity:.75; margin:0 0 .7rem; min-height:.9rem; }
   #go { display:none; text-align:center; background:#6f8f4e; color:#fff; text-decoration:none; border-radius:999px; padding:.8rem 1rem; font-size:1.15rem; }
   .nav { display:flex; gap:.5rem; margin-top:.8rem; }
   button { flex:1; font:inherit; border:0; border-radius:999px; padding:.85rem; background:#fffaf1; }
@@ -27,6 +28,7 @@
     <div class="emoji" id="emoji">✦</div>
     <div id="kicker"></div>
     <p id="line"></p>
+    <div id="tag"></div>
     <a id="go" href="#"></a>
   </div>
   <div class="nav">
@@ -108,6 +110,143 @@ const kannada = [
 "Song: a festival or home song she already asks for. One verse only."
 ];
 const BASE = new Date(2026, 8, 28, 12, 0, 0); // Mon Sep 28 2026
+// ---- Marble Skill Taxonomy progression (ages 4–6), starts Mon Oct 19 2026 ----
+// Topic tags are exact Marble topic names (withmarbleapp/os-taxonomy, ODbL 1.0 / CC BY-SA 4.0).
+const TOGETHER = "./math/?mode=together";
+const NEWBASE = new Date(2026, 9, 19, 12, 0, 0); // Mon Oct 19 2026
+const P = [ // Play: shapes, position, measuring, science
+["Positional Language","Hide a toy; she tells you where it is: on, under, behind, or next to."],
+["2-D shapes","Shape hunt: find a circle, a square, and a triangle in the house."],
+["Types of Weather","Look out the window: is it sunny, cloudy, rainy, or windy?"],
+["Positional Language","Follow me: put the block behind the box, then on top of it."],
+["2-D shapes","Cut paper shapes; she picks out every triangle, big and small."],
+["Naming Common Animals","Name five toy animals, then find the bird."],
+["Measurable Attributes of Objects","Hold two things: which is heavy, which is light?"],
+["3-D shapes","Kitchen hunt: a ball is a sphere, a tin is a cylinder."],
+["Comparing Lengths & Heights","Build two towers; which one is taller?"],
+["Common Plants & Trees","Walk outside and name three plants: grass, a tree, a flower."],
+["Positional Language","Teddy walks left, then right, then in front of you."],
+["3-D shapes","Roll a ball and a block: which rolls? Say sphere and cube."],
+["Objects vs Materials","The cup is the thing; plastic is what it is made of. Touch and say."],
+["Comparing Lengths & Heights","Lay two strings side by side: which is longer?"],
+["2-D shapes","Make a circle, a square, and a triangle with string or sticks."],
+["3-D shapes","Find a cube, a sphere, a cylinder, and a cone in her toys."],
+["Flat vs Solid Shapes","Sort into two piles: flat paper shapes and solid blocks."],
+["Types of Weather","Weather walk: sunny, cloudy, windy, or foggy? Feel it."],
+["Naming Common Animals","Find a bird and a fish in a book: birds have feathers, fish swim."],
+["Comparing Lengths & Heights","Stand back to back: who is taller, who is shorter?"],
+["Flat vs Solid Shapes","A circle is flat, a ball is solid: find one of each."],
+["Objects vs Materials","Two spoons, metal and wood: same thing, different material."],
+["Common Plants & Trees","Find a tree: does it drop its leaves, or stay green?"],
+["Positional Language","Little course: step over, crawl under, stand beside, hide behind."],
+["Flat vs Solid Shapes","Feel a shape in a bag: flat or solid?"],
+["Naming Common Animals","Toy animal sort: birds, fish, and furry mammals."],
+["Comparing Lengths & Heights","Lie down next to the broom: are you longer or shorter?"],
+["Types of Weather","Draw today's weather: sun, cloud, rain, or wind."]
+];
+const F = [ // Feelings
+["Naming Basic Emotions","Make a happy face; what makes you happy?"],
+["Naming Basic Emotions","Make a sad face and name it: sad."],
+["Naming Basic Emotions","Show an angry face and stomp once: angry."],
+["Naming Basic Emotions","Make a scared face and name it: scared."],
+["Naming Basic Emotions","Show excited: jump once with a big smile."],
+["Naming Basic Emotions","Make a surprised face: big eyes, open mouth."],
+["Naming Basic Emotions","Point to a face in a book: what is that person feeling?"],
+["Naming Basic Emotions","You make a face; she guesses the feeling."],
+["Naming Basic Emotions","Ask how she feels; she answers, “I feel ___.”"],
+["Naming Basic Emotions","Teddy fell down: how does Teddy feel?"],
+["Naming Basic Emotions","Find someone happy and someone sad in a book."],
+["Naming Basic Emotions","At bedtime she finishes, “Today I felt ___.”"],
+["Words for Big Feelings","New word, calm: be slow and still together for three counts."],
+["Words for Big Feelings","New word, breathe: in through the nose, out slowly."],
+["Words for Big Feelings","New word, patience: wait five counts before the snack."],
+["Words for Big Feelings","New word, frustrated: like when the tower falls down."],
+["Words for Big Feelings","New word, settle: shake a jar of water and glitter and watch it settle."],
+["Words for Big Feelings","New word, disappointed: like when the park is closed."],
+["Simple Calming Strategies","Smell the flower, blow out the candle: three slow breaths."],
+["Simple Calming Strategies","Count slowly to ten together to calm down."],
+["Simple Calming Strategies","Choose a quiet calm spot and sit there once."],
+["Simple Calming Strategies","Squeeze a soft toy tight, then let go."],
+["Simple Calming Strategies","Pretend to be mad, then take one slow breath."],
+["Simple Calming Strategies","Show two ways to calm down: breathing and counting."],
+["Simple Calming Strategies","Ask: what helps you feel calm?"],
+["Simple Calming Strategies","Teddy is upset; she shows Teddy how to breathe."],
+["Simple Calming Strategies","Say it together: “Calm helps me think.”"],
+["Simple Calming Strategies","Trace up and down her fingers: breathe in up, out down."]
+];
+const NUM = [ // Numbers: [topic, line, NumberDeck mode]
+["Counting objects to 20","Line up 12 blocks; count them, touching each one.",COUNT],
+["Counting objects to 20","Scatter 8 spoons; count them without missing one.",COUNT],
+["Counting objects to 20","You say 15; she counts out 15 grapes from the bowl.",COUNT],
+["Counting objects to 20","Count every shoe by the door, up to 20.",COUNT],
+["Representing numbers with objects","You say 4; she holds up 4 fingers.",LOOK],
+["Representing numbers with objects","You say 6; she builds a 6-block tower.",COUNT],
+["Representing numbers with objects","She draws 5 dots for 5 toys.",LOOK],
+["Representing numbers with objects","One tally line for each jump, up to 5.",LOOK],
+["One More Each Time","Tower of 5, add one block: how many now?",COUNT],
+["One More Each Time","Three toys in a row, add one more: say 4.",COUNT],
+["One More Each Time","Is 8 one more than 7? Check with blocks.",COUNT],
+["One More Each Time","Show 6 fingers, then one more, then one less.",COUNT],
+["One More Each Time","On the stairs, each step up is one more number.",COUNT],
+["Comparing groups: more or fewer","Two block piles side by side: which has more?",LOOK],
+["Comparing groups: more or fewer","Count her cars and your cars: who has fewer?",LOOK],
+["Comparing groups: more or fewer","Make two groups that are equal.",LOOK],
+["Comparing groups: more or fewer","Three plates of crackers: which has the most, which the least?",LOOK],
+["Comparing groups: more or fewer","Give each cup a spoon: more cups or more spoons?",LOOK],
+["Addition as combining or putting together two","2 blocks and 1 block together: how many altogether?",TOGETHER],
+["Addition as combining or putting together two","3 toys come to a party, then 2 more join: how many now?",TOGETHER],
+["Addition as combining or putting together two","Push two small piles together and say the total.",TOGETHER],
+["Addition as combining or putting together two","4 grapes and 2 grapes in one bowl: how many?",TOGETHER],
+["Addition as combining or putting together two","She makes 5 from two groups, then pushes them together.",TOGETHER],
+["Subtraction as taking away or separating","5 crackers, eat 2: how many are left?",COUNT],
+["Subtraction as taking away or separating","Tower of 6, take one away: how many left?",COUNT],
+["Subtraction as taking away or separating","4 ducks in the bath, 1 swims away: how many left?",COUNT],
+["Subtraction as taking away or separating","Hide 2 of 5 blocks under a cup: how many still show?",COUNT],
+["Subtraction as taking away or separating","Take 3 away from 7 blocks and count what is left.",COUNT]
+];
+const LET = [ // Letters (WordDeck link stays)
+["Knowing all letters","Meet B: \u201cThis is B. It says /b/.\u201d Trace big B, then little b, in the air. Then two taps."],
+["Rhyming words","Cat, bat, dog: which one does not rhyme?"],
+["Rhyming words","Say a word that rhymes with hat."],
+["Rhyming words","Read a rhyming book and pause so she says the rhyme."],
+["Rhyming words","Bear rhymes with chair; she finds one more rhyme."],
+["Rhyming words","Sing Twinkle Twinkle; she sings the last word of each line."],
+["Syllables","Clap her name, Sa-ma-ya: three claps."],
+["Syllables","Clap but-ter-fly: three claps."],
+["Syllables","Rain and bow make? Rainbow!"],
+["Syllables","Clap the beats in Amma, then in elephant."],
+["Syllables","You say ba-na-na in pieces; she says it whole."],
+["Onsets & Rimes","/c/ and /at/ make? Cat!"],
+["Onsets & Rimes","/s/ and /un/ make? Sun!"],
+["Onsets & Rimes","What is the first sound in dog?"],
+["Onsets & Rimes","What is the last sound in cat?"],
+["Onsets & Rimes","Change the /c/ in cat to /b/: what word now?"],
+["Onsets & Rimes","What is the middle sound in pig?"],
+["Knowing all letters","Sing the ABC song, pointing at the letters."],
+["Knowing all letters","Show A, M, and S; she says their names."],
+["Knowing all letters","Find big B and little b, and name both."],
+["Knowing all letters","Mix up five letter cards; she names each one."],
+["Single Letter Sounds","New sound: r says /rrr/, like a tiger growl. Red, run."],
+["Single Letter Sounds","New sound: k says /k/, like kite."],
+["Single Letter Sounds","New sound: j says /j/, like jump. Jump once."],
+["Single Letter Sounds","New sound: v says /vvv/, like van."],
+["Single Letter Sounds","New sound: w says /w/, like wave. Wave!"],
+["Single Letter Sounds","New sound: y says /y/, like yes."],
+["Single Letter Sounds","New sound: z says /zzz/, like a buzzing bee."]
+];
+function newCardsFor(j, i, t) {
+  const key = t.getFullYear() + "-" + String(t.getMonth()+1).padStart(2,"0") + "-" + String(t.getDate()).padStart(2,"0");
+  const lionLine = lionWeek[key] || lion[i % lion.length];
+  return [
+    ["✦","Play", P[j][1], null, null, P[j][0]],
+    ["🙂","Feelings", F[j][1], null, null, F[j][0]],
+    ["🏠","Home", routines[i % routines.length].split(".")[0]],
+    ["🦁","Lions", lionLine],
+    ["123","Numbers", NUM[j][1], NUM[j][2], "Numbers", NUM[j][0]],
+    ["Bb","Letters", LET[j][1], WORD, "Letters", LET[j][0]],
+    ["ಕ","Kannada", kannada[i % kannada.length].split(".")[0]]
+  ];
+}
 let extra = 0;
 let step = 0;
 function cardsFor(i, d, t) {
@@ -127,21 +266,27 @@ function cardsFor(i, d, t) {
   ];
 }
 function render() {
-  const t = new Date();
+  const q = new URLSearchParams(location.search).get("date");
+  const m = q && /^(\d{4})-(\d{2})-(\d{2})$/.exec(q);
+  const t = m ? new Date(+m[1], +m[2]-1, +m[3]) : new Date();
   t.setDate(t.getDate() + extra);
   t.setHours(12,0,0,0);
   let i = Math.round((t - BASE) / 86400000);
   i = ((i % 28) + 28) % 28;
-  const pack = cardsFor(i, days[i], t);
+  const isNew = t >= NEWBASE;
+  let j = Math.round((t - NEWBASE) / 86400000);
+  j = ((j % 28) + 28) % 28;
+  const pack = isNew ? newCardsFor(j, i, t) : cardsFor(i, days[i], t);
   if (step >= pack.length) step = 0;
   if (step < 0) step = pack.length - 1;
   const c = pack[step];
-  document.getElementById("title").textContent = days[i][0].split("·")[0].trim();
+  document.getElementById("title").textContent = isNew ? "Week " + (Math.floor(j / 7) + 1) : days[i][0].split("·")[0].trim();
   document.getElementById("meta").textContent = t.toLocaleDateString("en-US", { weekday:"short", month:"short", day:"numeric" });
   document.getElementById("count").textContent = (step+1) + " / " + pack.length;
   document.getElementById("emoji").textContent = c[0];
   document.getElementById("kicker").textContent = c[1];
   document.getElementById("line").textContent = c[2];
+  document.getElementById("tag").textContent = c[5] ? "Marble · " + c[5] : "";
   const go = document.getElementById("go");
   if (c[3]) { go.style.display = "block"; go.href = c[3]; go.textContent = c[4]; }
   else go.style.display = "none";
