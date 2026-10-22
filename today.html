@@ -19,6 +19,12 @@
   .nav { display:flex; gap:.5rem; margin-top:.8rem; }
   button { flex:1; font:inherit; border:0; border-radius:999px; padding:.85rem; background:#fffaf1; }
   #nextc { background:#3a2412; color:#fffaf1; }
+  #kn { display:none; text-align:center; font-size:1.05rem; margin:0 0 .7rem; color:#5a3a1a; }
+  #said { display:none; text-align:center; font-size:.85rem; }
+  #said .row { display:flex; gap:.4rem; justify-content:center; align-items:center; margin:.2rem 0 .35rem; }
+  #said button { flex:0 0 auto; padding:.45rem .9rem; font-size:.85rem; border:2px solid #6f8f4e; background:#fffaf1; color:#3a2412; }
+  #said button.on { background:#6f8f4e; color:#fff; }
+  #saidn { font-size:.7rem; color:#8a5a28; opacity:.8; }
 </style>
 </head>
 <body>
@@ -29,7 +35,9 @@
     <div class="emoji" id="emoji">✦</div>
     <div id="kicker"></div>
     <p id="line"></p>
+    <p id="kn" lang="kn"></p>
     <div id="tag"></div>
+    <div id="said"><div class="row"><span>She said it herself:</span><button type="button" id="sayY">Yes</button><button type="button" id="sayN">Not yet</button></div><div id="saidn"></div></div>
     <a id="go" href="#"></a>
     <a id="gum" href="./gumball.html">Gumball machine</a>
   </div>
@@ -237,10 +245,17 @@ const LET = [ // Letters (WordDeck link stays)
 ["Single Letter Sounds","New sound: y says /y/, like yes."],
 ["Single Letter Sounds","New sound: z says /zzz/, like a buzzing bee."]
 ];
+// Weekly "Speak up" card (Montessori Grace & Courtesy), Fridays of the 28-day plan (j % 7 === 4).
+const SPEAK = [
+["Choices","Offer two real choices: which book first? Dosa or idli? Go with what she picks. She says, \u201cI want ___, please.\u201d","ನನಗೆ ___ ಬೇಕು. (nanage ___ bēku)"],
+["Pickup question","Play pickup at home: Amma is Ms. Tania, she asks one question. Then at pickup, she asks Ms. Tania one question herself.","ನಾನು ಒಂದು ಪ್ರಶ್ನೆ ಕೇಳಬಹುದಾ? (nānu ondu praśne kēḷabahudā?)"],
+["Library","At the library, she asks the librarian for a book herself. Amma stands beside her. \u201cExcuse me, can I have a book about ___?\u201d","___ ಬಗ್ಗೆ ಒಂದು ಪುಸ್ತಕ ಬೇಕು. (___ bagge ondu pustaka bēku)"],
+["Body words & turns","She points and says, \u201cMy ___ hurts here.\u201d Then with a toy: \u201cCan I have a turn, please?\u201d","ನನಗೆ ಇಲ್ಲಿ ನೋವಾಗುತ್ತಿದೆ. ನನಗೂ ಕೊಡು. (nanage illi nōvāguttide. nanagū koḍu.)"]
+];
 function newCardsFor(j, i, t) {
   const key = t.getFullYear() + "-" + String(t.getMonth()+1).padStart(2,"0") + "-" + String(t.getDate()).padStart(2,"0");
   const lionLine = lionWeek[key] || lion[i % lion.length];
-  return [
+  const out = [
     ["✦","Play", P[j][1], null, null, P[j][0]],
     ["🙂","Feelings", F[j][1], null, null, F[j][0]],
     ["🏠","Home", routines[i % routines.length].split(".")[0]],
@@ -249,7 +264,21 @@ function newCardsFor(j, i, t) {
     ["Bb","Letters", LET[j][1], WORD, "Letters", LET[j][0]],
     ["ಕ","Kannada", kannada[i % kannada.length].split(".")[0]]
   ];
+  if (j % 7 === 4) {
+    const w = SPEAK[Math.floor(j / 7)];
+    out.splice(2, 0, ["💬","Speak up · " + w[0], w[1], null, null, null, false, { kn: w[2], key: key }]);
+  }
+  return out;
 }
+const SKEY = "samaya-speakup:";
+function sayGet(k) { try { return localStorage.getItem(SKEY + k); } catch (e) { return null; } }
+function saySet(k, v) { try { localStorage.setItem(SKEY + k, v); } catch (e) {} }
+function sayCount() {
+  let n = 0;
+  try { for (let x = 0; x < localStorage.length; x++) { const k = localStorage.key(x); if (k && k.indexOf(SKEY) === 0 && localStorage.getItem(k) === "yes") n++; } } catch (e) {}
+  return n;
+}
+let sayKey = null;
 let extra = 0;
 let step = 0;
 function cardsFor(i, d, t) {
@@ -289,7 +318,19 @@ function render() {
   document.getElementById("emoji").textContent = c[0];
   document.getElementById("kicker").textContent = c[1];
   document.getElementById("line").textContent = c[2];
-  document.getElementById("tag").textContent = c[5] ? "Marble · " + c[5] : "";
+  const sp = c[7];
+  document.getElementById("tag").textContent = sp ? "Speak up · Grace & Courtesy" : (c[5] ? "Marble · " + c[5] : "");
+  const kn = document.getElementById("kn");
+  kn.style.display = sp ? "block" : "none"; kn.textContent = sp ? sp.kn : "";
+  sayKey = sp ? sp.key : null;
+  document.getElementById("said").style.display = sp ? "block" : "none";
+  if (sp) {
+    const v = sayGet(sp.key);
+    document.getElementById("sayY").className = v === "yes" ? "on" : "";
+    document.getElementById("sayN").className = v === "no" ? "on" : "";
+    const n = sayCount();
+    document.getElementById("saidn").textContent = "Said it herself: " + n + (n === 1 ? " time" : " times");
+  }
   const go = document.getElementById("go");
   if (c[3]) { go.style.display = "block"; go.href = c[3]; go.textContent = c[4]; }
   else go.style.display = "none";
@@ -297,6 +338,8 @@ function render() {
 }
 document.getElementById("nextc").onclick = () => { step += 1; render(); };
 document.getElementById("backc").onclick = () => { step -= 1; render(); };
+document.getElementById("sayY").onclick = () => { if (sayKey) { saySet(sayKey, "yes"); render(); } };
+document.getElementById("sayN").onclick = () => { if (sayKey) { saySet(sayKey, "no"); render(); } };
 render();
 </script>
 </body>
