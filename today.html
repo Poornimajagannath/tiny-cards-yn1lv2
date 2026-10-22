@@ -246,11 +246,12 @@ const LET = [ // Letters (WordDeck link stays)
 ["Single Letter Sounds","New sound: z says /zzz/, like a buzzing bee."]
 ];
 // Weekly "Speak up" card (Montessori Grace & Courtesy), Fridays of the 28-day plan (j % 7 === 4).
+// 4th field = Marble topic label(s), exact names from os-taxonomy topics.json (English, Speaking & Listening, age 4+).
 const SPEAK = [
-["Choices","Offer two real choices: which book first? Dosa or idli? Go with what she picks. She says, \u201cI want ___, please.\u201d","ನನಗೆ ___ ಬೇಕು. (nanage ___ bēku)"],
-["Pickup question","Play pickup at home: Amma is Ms. Tania, she asks one question. Then at pickup, she asks Ms. Tania one question herself.","ನಾನು ಒಂದು ಪ್ರಶ್ನೆ ಕೇಳಬಹುದಾ? (nānu ondu praśne kēḷabahudā?)"],
-["Library","At the library, she asks the librarian for a book herself. Amma stands beside her. \u201cExcuse me, can I have a book about ___?\u201d","___ ಬಗ್ಗೆ ಒಂದು ಪುಸ್ತಕ ಬೇಕು. (___ bagge ondu pustaka bēku)"],
-["Body words & turns","She points and says, \u201cMy ___ hurts here.\u201d Then with a toy: \u201cCan I have a turn, please?\u201d","ನನಗೆ ಇಲ್ಲಿ ನೋವಾಗುತ್ತಿದೆ. ನನಗೂ ಕೊಡು. (nanage illi nōvāguttide. nanagū koḍu.)"]
+["Choices","Offer two real choices: which book first? Dosa or idli? Go with what she picks. She says, \u201cI want ___, please.\u201d","ನನಗೆ ___ ಬೇಕು. (nanage ___ bēku)","Describing Aloud"],
+["Pickup question","Play pickup at home: Amma is Ms. Tania, she asks one question. Then at pickup, she asks Ms. Tania one question herself.","ನಾನು ಒಂದು ಪ್ರಶ್ನೆ ಕೇಳಬಹುದಾ? (nānu ondu praśne kēḷabahudā?)","Asking Questions"],
+["Library","At the library, she asks the librarian for a book herself. Amma stands beside her. \u201cExcuse me, can I have a book about ___?\u201d","___ ಬಗ್ಗೆ ಒಂದು ಪುಸ್ತಕ ಬೇಕು. (___ bagge ondu pustaka bēku)","Asking Questions, Describing Aloud"],
+["Body words & turns","She points and says, \u201cMy ___ hurts here.\u201d Then with a toy: \u201cCan I have a turn, please?\u201d","ನನಗೆ ಇಲ್ಲಿ ನೋವಾಗುತ್ತಿದೆ. ನನಗೂ ಕೊಡು. (nanage illi nōvāguttide. nanagū koḍu.)","Describing Aloud, Listening and responding"]
 ];
 function newCardsFor(j, i, t) {
   const key = t.getFullYear() + "-" + String(t.getMonth()+1).padStart(2,"0") + "-" + String(t.getDate()).padStart(2,"0");
@@ -266,7 +267,7 @@ function newCardsFor(j, i, t) {
   ];
   if (j % 7 === 4) {
     const w = SPEAK[Math.floor(j / 7)];
-    out.splice(2, 0, ["💬","Speak up · " + w[0], w[1], null, null, null, false, { kn: w[2], key: key }]);
+    out.splice(2, 0, ["💬","Speak up · " + w[0], w[1], null, null, null, false, { kn: w[2], key: key, mt: w[3] }]);
   }
   return out;
 }
@@ -319,7 +320,7 @@ function render() {
   document.getElementById("kicker").textContent = c[1];
   document.getElementById("line").textContent = c[2];
   const sp = c[7];
-  document.getElementById("tag").textContent = sp ? "Speak up · Grace & Courtesy" : (c[5] ? "Marble · " + c[5] : "");
+  document.getElementById("tag").textContent = sp ? "Marble · " + sp.mt : (c[5] ? "Marble · " + c[5] : "");
   const kn = document.getElementById("kn");
   kn.style.display = sp ? "block" : "none"; kn.textContent = sp ? sp.kn : "";
   sayKey = sp ? sp.key : null;
