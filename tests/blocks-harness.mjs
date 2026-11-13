@@ -140,6 +140,8 @@ try {
   await shot('01-number-1.png');
 
   await page.locator('#blocks .cube').click();
+  await page.locator('#blocks .cube').click();
+  assert((await page.locator('#blocks .cube').getAttribute('data-count')) === '1', 'double-tap counted twice');
   await pause(250);
   const afterOne = await utters();
   assert(afterOne.some((u) => u.text === 'one' && u.lang === 'en-US'), 'said one, got ' + JSON.stringify(afterOne));
@@ -208,9 +210,18 @@ try {
   assert(await page.locator('#blocks .cube').count() === 5, 'five blocks');
   await noSideways();
   assertMin(await boxes('#blocks .cube'), 48, 'block on 5');
-  const tops = await page.locator('#blocks .cube').evaluateAll((els) => els.map((el) => el.getBoundingClientRect().top));
-  assert(Math.max(...tops) - Math.min(...tops) < 2, 'five blocks wrapped onto two rows');
+  const rects = await page.locator('#blocks .cube').evaluateAll((els) => els.map((el) => {
+    const r = el.getBoundingClientRect();
+    return { left: r.left, top: r.top, w: r.width, h: r.height };
+  }));
+  assert(Math.max(...rects.map((r) => r.left)) - Math.min(...rects.map((r) => r.left)) < 4, 'five blocks are not one tower');
+  assert(Math.max(...rects.map((r) => r.top)) - Math.min(...rects.map((r) => r.top)) > 40, 'tower has no height');
+  assert(rects.every((r) => r.w >= 64 && r.h >= 64), 'five blocks too small ' + JSON.stringify(rects));
   await shot('05-number-5.png');
+  const five = page.locator('#blocks .cube');
+  for (let i = 0; i < 5; i++) await five.nth(i).click();
+  const rapid = await five.evaluateAll((els) => els.map((el) => el.getAttribute('data-count')));
+  assert(rapid.join(',') === '1,2,3,4,5', 'rapid taps ' + rapid.join(','));
 
   await page.locator('#add-one').click();
   await pause(250);
@@ -267,6 +278,64 @@ try {
   await page.locator('#back').click();
   await pause(150);
   assert((await page.locator('#numeral').textContent()) === '5', 'back from together');
+
+  const knBox = await page.locator('#kannada').evaluate((el) => ({
+    scroll: el.scrollHeight,
+    client: el.clientHeight,
+  }));
+  assert(knBox.scroll <= knBox.client + 2, 'kannada clipped ' + JSON.stringify(knBox));
+
+  await page.goto(origin + '/blocks.html', { waitUntil: 'load' });
+  await page.locator('#add-one').click();
+  await page.locator('#blocks .cube').first().click();
+  assert((await page.locator('#numeral').textContent()) === '2', 'tap during add-one');
+  assert((await page.locator('#blocks .cube[data-count]').count()) === 1, 'tap during animation counted');
+
+  async function fit(width, height, name) {
+    const ctx = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: 2 });
+    const p = await ctx.newPage();
+    const errs = [];
+    p.on('pageerror', (err) => errs.push(String(err)));
+    await p.goto(origin + '/blocks.html', { waitUntil: 'load' });
+    await p.locator('#next').click();
+    await p.locator('#next').click();
+    await p.locator('#next').click();
+    await p.locator('#next').click();
+    const size = await p.evaluate(() => ({
+      sw: document.documentElement.scrollWidth,
+      cw: document.documentElement.clientWidth,
+      sh: document.documentElement.scrollHeight,
+      ch: document.documentElement.clientHeight,
+    }));
+    assert(size.sw <= size.cw + 1, name + ' sideways ' + size.sw);
+    const blocks = await p.locator('#blocks .cube').evaluateAll((els) => els.map((el) => {
+      const r = el.getBoundingClientRect();
+      return { w: r.width, h: r.height, top: r.top, bottom: r.bottom };
+    }));
+    assert(blocks.length === 5, name + ' lost blocks');
+    assert(blocks.every((b) => b.w >= 48 && b.h >= 48 && b.top >= -1 && b.bottom <= height + 1), name + ' blocks ' + JSON.stringify(blocks));
+    await p.screenshot({ path: join(shots, name + '.png') });
+    assert(errs.length === 0, name + ' errors ' + errs.join('\n'));
+    await ctx.close();
+  }
+  await fit(320, 700, 'break-320');
+  await fit(430, 932, 'break-430');
+  await fit(700, 360, 'break-landscape');
+
+  const mute = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  await mute.addInitScript(() => {
+    try {
+      Object.defineProperty(window, 'speechSynthesis', { configurable: true, get() { return undefined; } });
+    } catch (err) { /* the page still has to survive a missing voice */ }
+  });
+  const mutePage = await mute.newPage();
+  const muteErrors = [];
+  mutePage.on('pageerror', (err) => muteErrors.push(String(err)));
+  await mutePage.goto(origin + '/blocks.html', { waitUntil: 'load' });
+  await mutePage.locator('#blocks .cube').click();
+  assert((await mutePage.locator('#said').innerText()).includes('one'), 'count still shows with no speech');
+  assert(muteErrors.length === 0, 'no-speech errors ' + muteErrors.join('\n'));
+  await mute.close();
 
   const outside = requests.filter((url) => !url.startsWith(origin));
   assert(outside.length === 0, 'left the origin: ' + outside.join(', '));

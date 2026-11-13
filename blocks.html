@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"/>
 <meta name="robots" content="noindex,nofollow"/>
 <meta name="color-scheme" content="light"/>
 <meta name="theme-color" content="#f3e6d0"/>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23c48962'/%3E%3C/svg%3E"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='4' fill='%23c48962'/%3E%3C/svg%3E"/>
 <title>Blocks</title>
 <!--
   Kannada words use a subset of Noto Sans Kannada.
@@ -18,246 +18,226 @@
 @font-face{
   font-family:"Blocks Kannada";
   src:url("data:font/woff2;base64,d09GMgABAAAAAA8QAA4AAAAAIBgAAA67AAIAQgAAAAAAAAAAAAAAAAAAAAAAAAAAGj4bg34chzQGYACBHBEICqgooWIBNgIkA4FMC2gABCAFhDwHIBt3G6OilpNWoaD46wROh7B4yq5zYAKh2lb1H7XCSBBO62S81bXn0WaKshixOMYUzxnylVdO9QO/zd7/pIAOWiUFJFulWsDItRgY53AT16WrLq+9c1eZvt90SbtvOl9jJxjN81zsj2VMYbaFEsXfi7P3ftLF4/FoMAGr1IpgqBE2tuB/lws3b+CEW11HIicq5x8AJte0sf+2SANiieR203OuiJQkAP//tW/13X/382bXH2JpRSuEKNYImUgoc96fN8L9azqwZoO5hSraxKxZkwShEcWjWSU0QiTSKiH3DZFtLWs8bnozqUWImGL0fu789z4BAoACAMAChYcgQ1AUwBhjDAQVB6qQAELIBIWaEUqxfxIpG/Tusd0EBa8sPQosADhdpv7nAaMAEQDmyLlpRGt8By0ABBFKBwvALQUDB4A+gMZLGwZZJIBk4dFwAKdMAgqoKIUUEyAPgUEVGLSrR9AxoJjYEBwcWDIKCJMWCJ6bxwTguBm/qJR6iDw4eEQkZFQ0LDIvHwD62nEBAATST+CbOEzfhmz4EY2YD0cGQC+AfgCzACwAsAzAIIANALYB2GPUIaNOGHXOqCtG3TLqgVFPGgUvU0uCsgbEp+1SOISLfcfDUhUu5ZsXnpWoRikuxg/xNfyC9triFd9XGlBroNegfVwKlZxzwko4VRtH9kF4fe7KgOaqd+YrmoZ2XLbOyIEb0aFt8Dk3MHz8Ot2bhXprAkAEUcQA7m5j4OWhAECQFRBwO+CHKGJLf7bkRK4V0MPadyhgwdyk05WHRYWu+2IECVNzV1EphPxgAgomTmHVFkiTOqdzBmdyFmcjZwoe6D8ZARUbj5iCjoWSCD4I75Nw1kSmpTw/RFRAchCVgdtTB80eKFAAYmge2NeyJbAjCMMkHRVRVxlIvmXaMbiNr4JBwSay8mRQbJ3L/QoXg7bLMnEEmQphAR1IBUDATbN0vNxzIiwGtvSPgBf/bKh2VKLwoAAMqx2RuREUFNKjRVkHgARXjypGoqSipqGlo2dgZCJCGEiAReE4/3Ezz4VcxEu4mEu4FEtdFDIrc0Kw0NNCwwKOYizSQyDGCBRfIKSAEFW5KFgbczPDpvygpkKnkhzxl0KFLXU2gAPoW5sBVGovFzljSiVA93AoFodFUSx43Y8ZOa2KIN79JT485foJaAqKty9Pih7UJQBEAABQkDvMiJBcYK36WhOgwijYX+I6N7jJrR70mCc85wUvec9Hfbj/IyPf8LvCQgNy+k3VIa3FeOOMlZLgD3HvAIH0/0VhZpTRLx/wV4B4BOAzAAcAAACgEMkZRoHVYrZaMLXpgve9II4e3TH2XcpnchoJWc72pCVBQlGyPbx8PY/C5lLYdBlFQ2EpSyhcCZnD1nfQg4zCTA++BgRjskIIs1mjvg4EEZjNAP7jmYKqNCMBGdrjJFbF/Ni+W4/KczDOhsMS8quQ3FW/C9L8qnSm26/8a+uJ8lnFJR1C7eWst237Gjmo7LXLrxZls+3xqtOK20VECjbFS2+XcAlO2Dj77vchs98Dq1ZGVJ9naQK/Wvk5IJbHOBo2gXhNcpAxP+ZhCCaFK8oxZ6YVJEx/3BJDJvQ+UvN5tC2RpaRdcqjloTISW+/byAEOMlzMdrU+BUIaGGcFECFt1l9Cy7NcRSZZYBc99E3XU0lmkdm/Bl5Fd65wTA4bphmnprPm6j2ctlh22PXQ3tXafXWh36doxh3lM/OGeqwmn5G08zPG4sH0DIcof8/4MUJm8TJGoC4hM0M/RmKPixqFW9NkXQfUNkqGyOV58CUaX0Xlbo0vj2cQafgl8OzuLK7zuh9mbLWxaqFl306YUdeKbY5+rxM2vhGwYdt5rPac9xYJPa7KWbq7hGQ3lr3JeYWDZDYU1KQnKG6WvU5aMogdYdp84McCHrM/l+exo2pvF5P9ehA5WVD9htgvEEvx50Xwrc1AYq3/wnzz7s0WbR2WHPsDLJ9obQ8FueTO9DKzbYk9MCvpksuqGYvibtLjHEXBZFny5i/miISdHRp14Vsv/7T3fCKXv2F5oHodGWvvA9n+PCnPuIcn02R1ct63eMhZPyIXRHLekt+Yk8iEUj9Rjm+vu7PGgOzm5vACI+W0stGwE8A7H5TDbtTceeUnnezT9iT9pLL3NVSy33TVRO3f4d70ptY7pLjo0B3F9enHgARIyPGIfQUSfFBe8so3n+d3+cLSpv4TIu3hvyGS2bPS4e+1R/sbttQzuE8XJW1L26SkLP3kOTO3EScMPmlrOvrERLJi+V0TkAJyz8LlsxOOXI+3srYzYOqPxe25Hl8iXhfvSNVXpeOOkE5YbW6oToObrLuyXWNrEjsdzWpjlV0jCQeUBuuPaurkngCOYyBotMJBpfZNb8gTiiWw/qDTYNMm3DHflBmxPdIJebWLkLsV8zPOFYmkoaVKAy6yJ6S9ZSXtKcv0Tww5FV7LpLHdsYVRS4Vvfmqzt8KqlXCLBpL0ZCvTVZ9I2Bo03/1Qr9J628JlqzMt5lyjGQxke1LxA1onczkqVdJAqTr/FU/z2yJRQKMeEAqcIcEHJklFVOpwh1TPl9gD8WvvflsqNykCnlBZAuuPOo32z6TCjC2s3cCN6RLNk6GY3DOjo7YxZBgPoReOf0EtWN39VlJlu7l9ZFWB9/7zqz4uqVUzPtu6PMgop3/NoWaanw2lga4IaeoGMn3J6mDQ6Ij74olo0GqNeeF1qcm5gXrfsk8WJ9+xjmx/cxbVr/i35c+2HjkmT6jJxKZkha6pymBxVSq+Z9eVSFOmMv/ixB6/XasJWL3csYyIxBg12y1Bg7Yw+pmjxxCV1E71O/rjddaQ80uNhbFl8PlAIetIv5147cTfHP7lsdCKpoGWXE1ZXPk9ob5Hck3DCcJOpcEeqA3bBqZE6mg+YnLx2gcFH7EG5d8Zhyq+Z4rjMhHX35cU9PHr1Hp5JKBQuSNl3EzDVxKLKmoKl89srX4nlTxpO3l81JT3J9AgqQ0bUmubWlv64EPrgu2a88t1djaHOmqu9MxoTVScSP5nuxmSmoq7bBTXRgzJtU3FdltSaXT6kr7u3hWNpapEQNTd5lxe59NmJpZHysZr6mYl5OpV/gpCiFyzyBWb0Ziw9SJdyXbbzSE3hXm2xGJ2PFKbCsxcEGyqDjZb1RMcPsu4sfqyidm+CelsN8wg926rSW2YWGWaNsHlCsYjbm9TY4Pwv+IxFT0Dnob5q/raI1WZgEQba9S1DKWrw8t2VP3/h8Jvee7LTVzrP2KREbb9MHvK0ow9oZJFNT6vT1faLuB9WKif62VLn7ZXhJrGZ+dYucl8ly0Za5+h7WVKspAjJ6YlRkq3NDrKA/4qgLFkX1vommxp1KDRtihkFg+/0tsz1RFrW9Tk3jRuRnZpu8Pvf1Y4g2Pr/eqp40LR6nHNtSK3u8Spj1aWwA5ZuG58PeZw8jQtlInH5cMTzm3TSTe8UawPUjvSLlfCufq0fpWiCM/nCm7+xjeA/E1axfTksLJI/WeeTZ9LtpQeXHY4uqhI9FNSSKoaY2vkm/32+pjUrPUaef2iWnOMaGNAaV+i0m0pdmz0gnf7JS37kzdjzL/KuMXn53mD8E6WSk/Ko8twhUdU6uUC/jL4eFtZzOHzVXdIbW1TYrKzFzjmoNuijvM9qybzLi4LznYJitiK9UKxSSqZxKuxMGKpoEl67sc6cmRskyp/zGkCfje8t0w6R+yw17Rr/MFWra3GJurFKWQOg7bivjk/GqiRFVm81mTAT/HV+Kzi+3DZp75VeHbIH3zVJ3IyqqQuTXOCSOMSc0aKf+njZOPV7d8GKWJHWPq32JHwwEzqu21S+8ZLm0sF+bDd1taVjts9TbmSJIWNvft+Q1hB8wgOUBzVxnLdF97yd8qQf8fzjUG7x9gs+GD6612lLQj/dZZJTj8tYkmEsMBRU9+91dwubyDNZgQJkTzF0rkTEpIwMSh9ilEFP/iV/1UnxEqnr9Isf3i35uPP+8WcY8KSLDtsnyIUHikumfrlx5qKqvKSN/oPu024PDn+XNuKN9EpjinOMHWwzHZ4DFxJ5pHg4qZcy8CBFRmsUQ5nPew8WlId1qfWnE5ssGu/mcZmTygN7rdFS89gM0+RfJjk+jSx+c0KZrXeVyN3ljt0NB6w9VQdRn04lzxlZ01VamfPDE/TosFXwFXeSu1MXjU0l2fD1ZFlu6oaib/cstGl6Jsl9JUTbVr8mJYIRkJiOrNKt/zyO5ApBEAwptwwfxH+6C/Gf/xcfDKEF74sS+cb4FCIIHSQDian8xwAPNqF6E2Y7jVMd0sMmwaadd2mtaCnvgUj1YKZsG4qWCeDjZx09Dji/GRs43YAkIspwNPlfcAIXxKMdB0bAOl/PwDS/gWzpDdQaZFYK3jjhf0TlqRDe9zTxw7FPA+lLLWfzV3/To/0PANxBf+PzAsMvx95q3T140BrMTIN3AVy3Bc7ARp3AUL/Vv/SODCshyoKaUUQN7dHFEL23iEAUP6/iZF/Ju/8JxIwXwAArx8v3QkA3tnb9Ou19ZvN26cEgIcCAEDAHzwO3kTrtFRT36/XXE0mlUzpYOAPOfEgQHG5SQeAqv4tY59CuCzLriFk379XmuHhubdX9yu47pT1hLITOd9zReYZnnlB93zCX4uxYg6hC7SRUBtI1phpoC0qbbFq439t4642HteWwHXF2XN9MM94c14ITV5mA+QBIO+Qo88RKjvvZMl+Q16FUUlF5VMIAWB2CtGL8AETBkoIxunZS17eahJIQohNSkIVWJSEEbQuCcvkpSScC8FeP54uVwjoM9Vs/bp16jJAxMTAyAENEX36WkWvjrQxWW10jg+H3sxaW8phN9shp0O/GTq000npM6CPSJ20rClV6nFZae3SsqHTdL2quJ8JyMDhaBUiqlSJqKBS2bSyeWhhZj3PS5RTI/O953TrkyXiUiwy8PAy0qY3oku3lEoozHB0+fg6ZkoiWmHIoUO/a2XIIcJMKodZrpEFIOg+IstNopChLBfqAEh70+RMy6B5E4qJRXFh3Hv3/x5MAA==") format("woff2");
-  font-weight:400;
-  font-style:normal;
-  font-display:block;
+  font-weight:400;font-style:normal;font-display:block;
 }
 :root{
   --paper:#f3e6d0;
-  --card:#fbf6eb;
   --ink:#2a2218;
   --muted:#7a6a58;
-  --clay:#c48962;
-  --clay-deep:#6b442c;
   --edge:#8d5a3c;
-  --leaf:#6a8a5c;
-  --line:rgba(141,98,68,.28);
+  --leaf:#3f6b45;
+  --ease:cubic-bezier(0.23,1,0.32,1);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{background:var(--paper)}
-html,body{margin:0;color:var(--ink)}
+html,body{margin:0;height:100%}
 body{
-  min-height:100vh;
   min-height:100dvh;
-  font-family:ui-rounded,"Avenir Next Rounded","Hiragino Maru Gothic ProN",system-ui,-apple-system,sans-serif;
-  background-color:var(--paper);
-  background-image:
-    radial-gradient(ellipse at 8% 0%,rgba(196,160,86,.18),transparent 48%),
-    repeating-linear-gradient(to bottom,transparent 0 31px,rgba(160,120,70,.055) 32px);
-  padding:10px 12px calc(12px + env(safe-area-inset-bottom));
-  user-select:none;
-  -webkit-user-select:none;
+  color:var(--ink);
+  font-family:ui-rounded,"Avenir Next Rounded","Hiragino Maru Gothic ProN",system-ui,sans-serif;
+  background:
+    radial-gradient(ellipse at 50% 108%,rgba(166,112,64,.2),transparent 46%),
+    var(--paper);
+  user-select:none;-webkit-user-select:none;
+  overscroll-behavior:none;
 }
-button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
-h1{font-weight:800;letter-spacing:-.03em}
-.top{
+.app{
+  height:100dvh;
+  display:flex;
+  flex-direction:column;
+  padding:
+    max(6px,env(safe-area-inset-top))
+    max(10px,env(safe-area-inset-right))
+    max(8px,env(safe-area-inset-bottom))
+    max(10px,env(safe-area-inset-left));
+}
+.bar{
   display:grid;
-  grid-template-columns:1fr auto 1fr;
+  grid-template-columns:48px minmax(0,1fr) 48px;
   align-items:center;
-  min-height:48px;
+  flex:none;
 }
-.back{
-  justify-self:start;
-  min-width:48px;
-  min-height:48px;
-  padding:8px 10px;
-  border:0;
-  background:transparent;
+.chev{
+  width:48px;height:48px;
+  border:0;background:transparent;
   color:var(--edge);
-  font-weight:800;
-  font-size:1.05rem;
-  border-radius:12px;
+  font-size:2rem;line-height:1;
+  border-radius:16px;
+  padding:0;
+  transition:transform 140ms var(--ease);
 }
-.back.is-off{visibility:hidden}
-.brand{margin:0;font-size:.95rem;font-weight:800;text-align:center}
-.dots{justify-self:end;display:flex;gap:6px;padding-right:4px}
-.dots i{
-  width:8px;height:8px;border-radius:50%;
-  background:rgba(141,98,68,.28);
-  display:block;
-}
-.dots i.on{background:var(--edge)}
-.stop{
-  margin:0 0 8px;
-  text-align:center;
-  color:var(--muted);
-  font-size:.82rem;
-}
+.chev:active{transform:scale(0.97)}
+.chev.is-off{visibility:hidden}
+.lock{text-align:center;min-width:0}
 .numeral{
-  margin:2px 0 0;
-  text-align:center;
-  font-size:5.2rem;
-  line-height:.9;
+  margin:0;
+  font-size:clamp(3.1rem,13vw,4.8rem);
+  line-height:.84;
+  letter-spacing:-.045em;
+  font-weight:800;
+  font-variant-numeric:tabular-nums;
 }
 .kannada{
-  margin:2px 0 8px;
-  text-align:center;
+  margin:2px 0 0;
+  min-height:1.45em;
   font-family:"Blocks Kannada","Noto Sans Kannada","Kannada MN",sans-serif;
-  font-size:2rem;
-  line-height:1.2;
+  font-size:clamp(1.35rem,5.4vw,1.8rem);
+  line-height:1.45;
   color:var(--edge);
-  min-height:2.4rem;
 }
-#blocks{
+.said{
+  margin:2px 0 0;
+  min-height:1.35em;
+  font-weight:800;
+  font-size:1.02rem;
+  font-family:ui-rounded,"Blocks Kannada","Noto Sans Kannada",sans-serif;
+  font-variant-numeric:tabular-nums;
+}
+#stage{
+  flex:1;
+  min-height:0;
   display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  align-items:flex-end;
+  position:relative;
+  overflow:hidden;
+}
+#screen-number,#screen-together{
+  flex:1;
+  min-height:0;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  align-items:center;
+}
+#screen-together{justify-content:center;gap:6px}
+.tower{
+  display:flex;
+  flex-direction:column-reverse;
+  align-items:center;
+  justify-content:flex-start;
   gap:6px;
-  min-height:80px;
-  margin:4px 0 10px;
-  padding:4px 0 10px;
-  border-bottom:3px solid var(--line);
+  padding-bottom:2px;
+}
+.tower.row{
+  flex-direction:row;
+  align-items:flex-end;
+  justify-content:center;
+  width:100%;
 }
 .cube{
-  width:62px;
-  height:62px;
-  padding:0;
-  border:0;
-  border-radius:16px;
-  background:
-    linear-gradient(160deg,rgba(255,255,255,.5),transparent 42%),
-    linear-gradient(#edc9a6,#c48962 58%,#b0754e);
-  box-shadow:inset 0 -7px 0 rgba(110,60,30,.16),0 3px 0 var(--edge);
+  border:0;padding:0;
+  border-radius:22px;
   color:#6a3b24;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
+  display:grid;place-items:center;
+  flex:none;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.62),transparent 34%),
+    linear-gradient(#f2d2b2,#c48962 56%,#b0734c);
+  box-shadow:
+    inset 0 -9px 0 rgba(110,58,28,.15),
+    inset 0 1px 0 rgba(255,255,255,.7),
+    0 8px 14px rgba(80,40,10,.1);
+  transition:color 160ms ease;
+  touch-action:manipulation;
 }
-.cube:active{transform:translateY(2px)}
-.cube.counted{box-shadow:inset 0 -7px 0 rgba(110,60,30,.16),0 3px 0 var(--edge),0 0 0 3px var(--leaf)}
-.cube.arrive{animation:settle .22s ease-out}
-@keyframes settle{from{transform:translateY(-12px);opacity:.35}}
-.seed{width:68%;height:68%;display:block}
-.hint,.said,.fact-line,.lead{
-  text-align:center;
-  margin:0;
+.cube.counted{
+  color:var(--leaf);
+  box-shadow:
+    inset 0 0 0 3px var(--leaf),
+    inset 0 -9px 0 rgba(110,58,28,.12),
+    0 8px 14px rgba(80,40,10,.1);
 }
-.hint{color:var(--muted);font-size:.95rem}
-.said{
-  min-height:1.5em;
-  margin:6px 0 10px;
-  font-size:1.2rem;
-  font-weight:800;
-}
-.said .kn{
-  font-family:"Blocks Kannada","Noto Sans Kannada","Kannada MN",sans-serif;
-  font-weight:400;
+.cube:active{transform:scale(0.97)}
+.seed{width:46%;height:46%;display:block}
+.ghost{
+  flex:none;
+  width:64px;height:64px;
+  display:grid;place-items:center;
+  border-radius:18px;
+  border:2px dashed rgba(141,90,60,.5);
+  background:transparent;
   color:var(--edge);
-}
-.slot,.next{
-  width:100%;
-  min-height:64px;
-  border-radius:18px;
-  font-size:1.25rem;
+  font:inherit;
   font-weight:800;
+  font-size:1.6rem;
+  padding:0;
+  min-width:48px;min-height:48px;
+  touch-action:manipulation;
+  transition:transform 140ms var(--ease);
 }
-.slot{
-  border:2.5px solid var(--edge);
-  background:var(--card);
-  margin:0 0 12px;
-}
-.slot:active,.next:active{transform:scale(.99)}
+.ghost:active{transform:scale(0.97)}
 .world{
-  background:var(--card);
-  border-radius:18px;
-  padding:12px 14px 14px;
-  margin:0 0 12px;
-  border:1.5px solid rgba(168,130,60,.28);
-}
-.kicker{
-  margin:0 0 2px;
-  font-size:.75rem;
-  font-weight:800;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  color:var(--muted);
-}
-.world-text{
+  flex:none;
   margin:0;
-  font-size:1.28rem;
-  font-weight:800;
-  line-height:1.25;
-}
-.next{
-  border:0;
-  background:var(--clay-deep);
-  color:#fffaf3;
-  position:sticky;
-  bottom:0;
-}
-.lead{color:var(--muted);font-size:1rem;margin:0 0 6px}
-.together-title{
-  margin:0 0 4px;
+  padding:8px 16px 2px;
   text-align:center;
-  font-size:2rem;
+  color:var(--muted);
+  font-size:.98rem;
+  line-height:1.3;
+  overflow-wrap:anywhere;
+  background:var(--paper);
+  position:relative;
+  z-index:2;
 }
-.fact{
-  background:var(--card);
-  border:1.5px solid rgba(168,130,60,.28);
-  border-radius:18px;
-  padding:8px 10px 10px;
-  margin:0 0 10px;
-}
+.fact{width:min(100%,440px);padding:2px 0}
 .fact-num{
   margin:0;
   text-align:center;
-  font-size:1.8rem;
+  font-size:1.85rem;
   font-weight:800;
+  letter-spacing:-.04em;
   line-height:1;
+  font-variant-numeric:tabular-nums;
 }
-.piles{
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-  gap:8px;
-  margin-top:6px;
-}
+.piles{display:flex;align-items:flex-end;justify-content:center;gap:12px;margin-top:6px}
 .pile{
-  min-width:72px;
-  min-height:56px;
-  padding:8px 10px;
-  border-radius:16px;
-  border:2px dashed rgba(141,98,68,.5);
+  min-width:76px;min-height:64px;
+  padding:4px 6px 0;
+  border:0;border-radius:18px;
   background:transparent;
+  touch-action:manipulation;
+  transition:transform 140ms var(--ease);
 }
-.pile:active{background:rgba(196,160,86,.22)}
-.stack{display:flex;flex-direction:column-reverse;align-items:center;gap:4px}
-.pile .cube{width:40px;height:40px;border-radius:12px;box-shadow:inset 0 -4px 0 rgba(110,60,30,.16),0 2px 0 var(--edge);pointer-events:none}
-.and{font-weight:800;color:var(--muted);padding-bottom:14px}
-.fact-line{font-weight:800;margin-top:6px;min-height:1.3em}
-.sr{
-  position:absolute;
-  width:1px;height:1px;
-  padding:0;margin:-1px;
-  overflow:hidden;
-  clip:rect(0 0 0 0);
-  white-space:nowrap;
-  border:0;
-}
-@media (max-width:380px){
-  .cube{width:52px;height:52px;border-radius:14px}
-  .numeral{font-size:4.4rem}
+.pile:active{transform:scale(0.97)}
+.stack{display:flex;flex-direction:column-reverse;align-items:center;gap:5px}
+.pile .cube{width:68px;height:58px;border-radius:16px;pointer-events:none;box-shadow:inset 0 -6px 0 rgba(110,58,28,.14),inset 0 1px 0 rgba(255,255,255,.65),0 6px 10px rgba(80,40,10,.1)}
+.and{font-weight:800;color:var(--muted);align-self:center}
+.fact-line{margin:6px 0 0;text-align:center;font-weight:800;min-height:1.25em;font-variant-numeric:tabular-nums}
+html.land .numeral{font-size:2.4rem}
+html.land .kannada{font-size:1.15rem;min-height:1.2em}
+html.land .said{font-size:.9rem}
+html.land .world{font-size:.85rem;padding-top:2px}
+html.land #screen-together{flex-direction:row;align-items:flex-end;justify-content:center;gap:8px}
+html.land .pile .cube{width:52px;height:44px}
+@media (hover:hover) and (pointer:fine){
+  .chev:hover,.ghost:hover{color:var(--ink)}
 }
 @media (prefers-reduced-motion:reduce){
-  .cube.arrive{animation:none}
+  .chev,.ghost,.pile,.cube{transition:none}
+  .chev:active,.ghost:active,.pile:active,.cube:active{transform:none}
 }
 </style>
 </head>
 <body>
-<header class="top">
-  <button class="back" id="back" type="button">← Back</button>
-  <p class="brand">Blocks</p>
-  <div class="dots" id="dots" aria-hidden="true"></div>
-</header>
-<p class="stop">Stop when she stops. Turn off silent switch if quiet.</p>
-<main id="stage"></main>
+<div class="app">
+  <header class="bar">
+    <button class="chev" id="back" type="button" aria-label="Back">‹</button>
+    <div class="lock">
+      <h1 class="numeral" id="numeral">1</h1>
+      <p class="kannada" id="kannada" lang="kn">ಒಂದು</p>
+      <p class="said" id="said" aria-live="polite"></p>
+    </div>
+    <button class="chev" id="next" type="button" aria-label="Next">›</button>
+  </header>
+  <div id="stage"></div>
+  <p class="world" id="world-text">Hold up 1 finger.</p>
+</div>
 <script>
-/* Original clay cubes for this page. One repeated seed mark, earth clay, no names.
-   Do not import television number-character names, rainbow colours, songs, or faces. */
+/* Clay blocks. One carved seed on every block, earth clay, no names.
+   Original to this page. Do not import television number-character
+   names, rainbow colours, songs, or faces. */
 (function () {
   'use strict';
-
+  var EASE = 'cubic-bezier(0.23, 1, 0.32, 1)';
   var NUMBERS = [
     { n: 1, en: 'one', kn: 'ಒಂದು', world: 'Hold up 1 finger.' },
     { n: 2, en: 'two', kn: 'ಎರಡು', world: 'Find 2 shoes.' },
@@ -266,49 +246,35 @@ h1{font-weight:800;letter-spacing:-.03em}
     { n: 5, en: 'five', kn: 'ಐದು', world: 'Clap 5 times.' }
   ];
   var SIX = { en: 'six' };
-
   var index = 0;
   var six = false;
-  var arrived = false;
   var line = '';
   var joined = { 4: false, 5: false };
   var factLine = { 4: '2 and 2', 5: '3 and 2' };
   var pendingKn = '';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var stage = document.getElementById('stage');
   var backBtn = document.getElementById('back');
-  var dots = document.getElementById('dots');
+  var nextBtn = document.getElementById('next');
+  var numeral = document.getElementById('numeral');
+  var kannada = document.getElementById('kannada');
+  var said = document.getElementById('said');
+  var world = document.getElementById('world-text');
 
+  function landscape() {
+    return window.innerHeight < 520 && window.innerWidth > window.innerHeight;
+  }
   function knVoice() {
     var synth = window.speechSynthesis;
     if (!synth || !synth.getVoices) return null;
     var list = [];
     try { list = synth.getVoices() || []; } catch (e) { return null; }
     for (var i = 0; i < list.length; i++) {
-      var lang = String(list[i].lang || '').toLowerCase();
-      if (lang.indexOf('kn') === 0) return list[i];
+      if (String(list[i].lang || '').toLowerCase().indexOf('kn') === 0) return list[i];
     }
     return null;
   }
-
-  function say(en, kn) {
-    var synth = window.speechSynthesis;
-    if (!synth || !en) return;
-    try { synth.cancel(); } catch (e) {}
-    try {
-      var u = new SpeechSynthesisUtterance(en);
-      u.lang = 'en-US';
-      u.rate = 0.88;
-      synth.speak(u);
-    } catch (e) {}
-    pendingKn = kn || '';
-    if (!kn) return;
-    var voice = knVoice();
-    if (!voice) return;
-    pendingKn = '';
-    speakKn(kn, voice);
-  }
-
   function speakKn(kn, voice) {
     var synth = window.speechSynthesis;
     if (!synth) return;
@@ -316,17 +282,32 @@ h1{font-weight:800;letter-spacing:-.03em}
       var k = new SpeechSynthesisUtterance(kn);
       k.lang = voice.lang || 'kn-IN';
       k.rate = 0.85;
-      try { k.voice = voice; } catch (e2) {}
+      try { k.voice = voice; } catch (e) {}
       synth.speak(k);
-    } catch (e3) {}
+    } catch (e2) {}
   }
-
+  function say(en, kn) {
+    var synth = window.speechSynthesis;
+    if (!synth || !en) return;
+    try { synth.cancel(); } catch (e) {}
+    try {
+      var u = new SpeechSynthesisUtterance(en);
+      u.lang = 'en-US';
+      u.rate = 0.9;
+      synth.speak(u);
+    } catch (e3) {}
+    pendingKn = kn || '';
+    if (!kn) return;
+    var voice = knVoice();
+    if (!voice) return;
+    pendingKn = '';
+    speakKn(kn, voice);
+  }
   function wordFor(count) {
     if (count >= 1 && count <= 5) return NUMBERS[count - 1];
     if (count === 6) return SIX;
     return null;
   }
-
   function seed() {
     var ns = 'http://www.w3.org/2000/svg';
     var svg = document.createElementNS(ns, 'svg');
@@ -337,12 +318,12 @@ h1{font-weight:800;letter-spacing:-.03em}
       var c = document.createElementNS(ns, 'circle');
       c.setAttribute('cx', String(cx));
       c.setAttribute('cy', '20');
-      c.setAttribute('r', '2.1');
+      c.setAttribute('r', '2.15');
       c.setAttribute('fill', 'currentColor');
       return c;
     }
     var path = document.createElementNS(ns, 'path');
-    path.setAttribute('d', 'M16 30c3.4 3.4 12.6 3.4 16 0');
+    path.setAttribute('d', 'M16 30.5c3.4 3.2 12.6 3.2 16 0');
     path.setAttribute('fill', 'none');
     path.setAttribute('stroke', 'currentColor');
     path.setAttribute('stroke-width', '2.2');
@@ -352,116 +333,99 @@ h1{font-weight:800;letter-spacing:-.03em}
     svg.appendChild(path);
     return svg;
   }
-
-  function cube(asButton, isArrive) {
-    var el = document.createElement(asButton ? 'button' : 'span');
-    if (asButton) el.type = 'button';
-    el.className = 'cube' + (isArrive ? ' arrive' : '');
+  function makeCube(i) {
+    var el = document.createElement('button');
+    el.type = 'button';
+    el.className = 'cube';
+    el.setAttribute('data-i', String(i));
+    el.setAttribute('aria-label', 'Block');
     el.appendChild(seed());
-    if (asButton) el.setAttribute('aria-label', 'Block');
     return el;
   }
-
-  function setSaid(node, text, kn) {
-    node.textContent = '';
-    node.appendChild(document.createTextNode(text));
-    if (kn) {
-      node.appendChild(document.createTextNode(' · '));
-      var span = document.createElement('span');
-      span.className = 'kn';
-      span.lang = 'kn';
-      span.textContent = kn;
-      node.appendChild(span);
-    }
+  function pop(el) {
+    if (reduce || !el.animate) return;
+    el.getAnimations().forEach(function (a) { a.cancel(); });
+    el.animate([
+      { transform: 'scale(0.96)' },
+      { transform: 'scale(1.035)', offset: 0.42 },
+      { transform: 'scale(1)' }
+    ], { duration: 260, easing: EASE });
   }
-
-  function paintDots() {
-    dots.textContent = '';
-    for (var i = 0; i < 6; i++) {
-      var mark = document.createElement('i');
-      if (i === index) mark.className = 'on';
-      dots.appendChild(mark);
-    }
+  function snapshot() {
+    return Array.prototype.map.call(stage.querySelectorAll('#blocks .cube'), function (el) {
+      return { i: el.getAttribute('data-i'), box: el.getBoundingClientRect() };
+    });
   }
-
-  function renderNumber() {
-    var info = NUMBERS[index];
-    var show = six ? 6 : info.n;
-    var screen = document.createElement('section');
-    screen.id = 'screen-number';
-    screen.setAttribute('data-n', String(show));
-
-    var h = document.createElement('h1');
-    h.className = 'numeral';
-    h.id = 'numeral';
-    h.textContent = String(show);
-    screen.appendChild(h);
-
-    var kn = document.createElement('p');
-    kn.className = 'kannada';
-    kn.id = 'kannada';
-    kn.lang = 'kn';
-    if (!six) kn.textContent = info.kn;
-    screen.appendChild(kn);
-
-    var row = document.createElement('div');
-    row.id = 'blocks';
-    for (var i = 0; i < show; i++) {
-      var b = cube(true, arrived && i === show - 1);
-      b.addEventListener('click', onBlock);
-      row.appendChild(b);
-    }
-    screen.appendChild(row);
-    arrived = false;
-
-    var hint = document.createElement('p');
-    hint.className = 'hint';
-    hint.id = 'hint';
-    hint.textContent = 'Tap each block.';
-    screen.appendChild(hint);
-
-    var said = document.createElement('p');
-    said.className = 'said';
-    said.id = 'said';
-    said.setAttribute('aria-live', 'polite');
-    said.textContent = line;
-    screen.appendChild(said);
-
-    var slot = document.createElement('button');
-    slot.className = 'slot';
-    slot.id = 'add-one';
-    slot.type = 'button';
-    if (six) {
-      slot.textContent = 'Back to 5';
-      slot.addEventListener('click', function () {
-        six = false;
-        line = '';
-        render();
+  function playFlip(prev) {
+    if (reduce || !prev.length) return;
+    var map = {};
+    prev.forEach(function (p) { map[p.i] = p.box; });
+    Array.prototype.forEach.call(stage.querySelectorAll('#blocks .cube'), function (el) {
+      var old = map[el.getAttribute('data-i')];
+      var box = el.getBoundingClientRect();
+      if (!old || !box.width) {
+        el.animate([
+          { transform: 'translateY(14px) scale(0.96)', opacity: 0 },
+          { transform: 'none', opacity: 1 }
+        ], { duration: 240, easing: EASE });
+        return;
+      }
+      var dx = (old.left + old.width / 2) - (box.left + box.width / 2);
+      var dy = (old.top + old.height / 2) - (box.top + box.height / 2);
+      var s = old.width / box.width;
+      if (!isFinite(s) || s <= 0) s = 1;
+      if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5 && Math.abs(s - 1) < 0.02) return;
+      el.animate([
+        { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + s + ')' },
+        { transform: 'translate(0,0) scale(1)' }
+      ], { duration: 260, easing: EASE });
+    });
+  }
+  function applySize() {
+    document.documentElement.classList.toggle('land', landscape());
+    var screen = document.getElementById('screen-number');
+    var blocks = document.getElementById('blocks');
+    if (!screen || !blocks) return;
+    var cubes = blocks.querySelectorAll('.cube');
+    var n = cubes.length || 1;
+    var gap = 6;
+    var ghostEl = document.getElementById('add-one');
+    var land = landscape();
+    if (land) {
+      blocks.classList.add('row');
+      var gh = 64;
+      var h = Math.max(56, Math.min(screen.clientHeight - 20, 128));
+      var availW = Math.max(48, screen.clientWidth - 12 - gh - gap * n);
+      var w = Math.max(48, Math.min(Math.floor(availW / n), h));
+      Array.prototype.forEach.call(cubes, function (el) {
+        el.style.width = w + 'px';
+        el.style.height = w + 'px';
       });
-    } else {
-      slot.textContent = 'Add one';
-      slot.addEventListener('click', onAdd);
+      if (ghostEl) {
+        var g = Math.max(48, Math.min(64, w));
+        ghostEl.style.width = g + 'px';
+        ghostEl.style.height = g + 'px';
+      }
+      return;
     }
-    screen.appendChild(slot);
-
-    var world = document.createElement('aside');
-    world.className = 'world';
-    world.id = 'world';
-    var kicker = document.createElement('p');
-    kicker.className = 'kicker';
-    kicker.textContent = 'Try this';
-    var wt = document.createElement('p');
-    wt.className = 'world-text';
-    wt.id = 'world-text';
-    wt.textContent = six ? 'Six is for another day.' : info.world;
-    world.appendChild(kicker);
-    world.appendChild(wt);
-    screen.appendChild(world);
-
-    screen.appendChild(nextButton('Next'));
-    stage.appendChild(screen);
+    blocks.classList.remove('row');
+    var ghostH = 64;
+    var avail = screen.clientHeight - ghostH - gap * (n + 1) - 8;
+    var side = Math.floor(avail / n);
+    var maxW = Math.min(screen.clientWidth - 28, 210);
+    if (!isFinite(side) || side < 56) side = 56;
+    if (side > maxW) side = maxW;
+    if (side * n > avail && avail > 0) side = Math.max(48, Math.floor(avail / n));
+    var bw = Math.min(Math.round(side * 1.15), maxW);
+    Array.prototype.forEach.call(cubes, function (el) {
+      el.style.width = bw + 'px';
+      el.style.height = side + 'px';
+    });
+    if (ghostEl) {
+      ghostEl.style.width = '64px';
+      ghostEl.style.height = '64px';
+    }
   }
-
   function pile(count) {
     var btn = document.createElement('button');
     btn.type = 'button';
@@ -469,134 +433,125 @@ h1{font-weight:800;letter-spacing:-.03em}
     btn.setAttribute('aria-label', count + (count === 1 ? ' block' : ' blocks'));
     var stack = document.createElement('span');
     stack.className = 'stack';
-    for (var i = 0; i < count; i++) stack.appendChild(cube(false, false));
+    for (var i = 0; i < count; i++) {
+      var c = document.createElement('span');
+      c.className = 'cube';
+      c.appendChild(seed());
+      stack.appendChild(c);
+    }
     btn.appendChild(stack);
     return btn;
   }
-
   function renderFact(total, parts) {
     var section = document.createElement('section');
     section.className = 'fact';
     section.id = 'fact-' + total;
     section.setAttribute('data-total', String(total));
     section.setAttribute('data-joined', joined[total] ? 'true' : 'false');
-
     var num = document.createElement('p');
     num.className = 'fact-num';
     num.textContent = String(total);
     section.appendChild(num);
-
     var piles = document.createElement('div');
     piles.className = 'piles';
     if (joined[total]) {
-      var one = pile(total);
-      one.addEventListener('click', function () { toggleFact(total, parts); });
-      piles.appendChild(one);
+      piles.appendChild(pile(total));
     } else {
-      var left = pile(parts[0]);
-      var right = pile(parts[1]);
-      var go = function () { toggleFact(total, parts); };
-      left.addEventListener('click', go);
-      right.addEventListener('click', go);
+      piles.appendChild(pile(parts[0]));
       var and = document.createElement('span');
       and.className = 'and';
       and.textContent = 'and';
-      piles.appendChild(left);
       piles.appendChild(and);
-      piles.appendChild(right);
+      piles.appendChild(pile(parts[1]));
     }
     section.appendChild(piles);
-
     var lineEl = document.createElement('p');
     lineEl.className = 'fact-line';
+    lineEl.setAttribute('aria-live', 'polite');
     lineEl.textContent = factLine[total];
     section.appendChild(lineEl);
     return section;
   }
-
-  function renderTogether() {
-    var screen = document.createElement('section');
-    screen.id = 'screen-together';
-
-    var h = document.createElement('h1');
-    h.className = 'together-title';
-    h.textContent = 'Together';
-    screen.appendChild(h);
-
-    var lead = document.createElement('p');
-    lead.className = 'lead';
-    lead.textContent = 'Tap to join. Tap to split.';
-    screen.appendChild(lead);
-
-    screen.appendChild(renderFact(4, [2, 2]));
-    screen.appendChild(renderFact(5, [3, 2]));
-
-    var said = document.createElement('p');
-    said.className = 'said sr';
-    said.id = 'said';
-    said.setAttribute('aria-live', 'polite');
-    said.textContent = line;
-    screen.appendChild(said);
-
-    var next = nextButton('Again');
-    screen.appendChild(next);
-    stage.appendChild(screen);
-  }
-
-  function nextButton(label) {
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'next';
-    btn.id = 'next';
-    btn.textContent = label;
-    btn.addEventListener('click', onNext);
-    return btn;
-  }
-
-  function render() {
-    stage.textContent = '';
-    paintDots();
+  function render(motion) {
+    var prev = motion ? snapshot() : [];
+    var info = NUMBERS[Math.min(index, 4)];
+    var show = six ? 6 : info.n;
+    document.documentElement.classList.toggle('land', landscape());
     backBtn.classList.toggle('is-off', index === 0);
     backBtn.disabled = index === 0;
-    if (index < 5) renderNumber();
-    else renderTogether();
+    if (index === 0) backBtn.setAttribute('aria-hidden', 'true');
+    else backBtn.removeAttribute('aria-hidden');
+    nextBtn.textContent = index === 5 ? '↻' : '›';
+    nextBtn.setAttribute('aria-label', index === 5 ? 'Again' : 'Next');
+    stage.textContent = '';
+    if (index < 5) {
+      numeral.textContent = String(show);
+      kannada.textContent = six ? '' : info.kn;
+      said.textContent = line;
+      world.textContent = six ? 'Six is for another day.' : info.world;
+      var screen = document.createElement('div');
+      screen.id = 'screen-number';
+      screen.setAttribute('data-n', String(show));
+      var blocks = document.createElement('div');
+      blocks.id = 'blocks';
+      blocks.className = 'tower';
+      for (var i = 0; i < show; i++) blocks.appendChild(makeCube(i));
+      var ghost = document.createElement('button');
+      ghost.type = 'button';
+      ghost.className = 'ghost';
+      ghost.id = 'add-one';
+      if (six) {
+        ghost.textContent = '5';
+        ghost.setAttribute('aria-label', 'Back to 5');
+      } else {
+        ghost.textContent = '+';
+        ghost.setAttribute('aria-label', 'Add one');
+      }
+      blocks.appendChild(ghost);
+      screen.appendChild(blocks);
+      stage.appendChild(screen);
+      applySize();
+      if (motion) playFlip(prev);
+    } else {
+      numeral.textContent = '';
+      kannada.textContent = '';
+      said.textContent = '';
+      world.textContent = 'Tap to join. Tap to split.';
+      var together = document.createElement('div');
+      together.id = 'screen-together';
+      together.appendChild(renderFact(4, [2, 2]));
+      together.appendChild(renderFact(5, [3, 2]));
+      stage.appendChild(together);
+    }
   }
-
-  function onBlock(ev) {
-    var btn = ev.currentTarget;
-    var row = document.getElementById('blocks');
-    var blocks = row.querySelectorAll('.cube');
+  function onBlock(btn) {
     var n = btn.getAttribute('data-count');
     if (!n) {
-      var used = 0;
-      for (var i = 0; i < blocks.length; i++) if (blocks[i].getAttribute('data-count')) used++;
-      n = String(used + 1);
+      n = String(document.querySelectorAll('#blocks .cube[data-count]').length + 1);
       btn.setAttribute('data-count', n);
       btn.classList.add('counted');
       btn.setAttribute('aria-label', 'Block ' + n);
     }
+    pop(btn);
     var info = wordFor(Number(n));
     if (!info) return;
-    var said = document.getElementById('said');
-    if (said) setSaid(said, info.en, info.kn || '');
+    said.textContent = info.kn ? (info.en + ' · ' + info.kn) : info.en;
     say(info.en, info.kn || '');
   }
-
   function onAdd() {
+    if (six) {
+      six = false;
+      line = '';
+      render(false);
+      return;
+    }
     var info = NUMBERS[index];
     line = info.n + ' and 1 make ' + (info.n + 1);
-    if (info.n < 5) {
-      index += 1;
-      six = false;
-      arrived = true;
-    } else {
-      six = true;
-      arrived = true;
-    }
-    render();
+    if (info.n < 5) index += 1;
+    else six = true;
+    render(true);
     say(line, '');
   }
-
   function toggleFact(total, parts) {
     if (joined[total]) {
       joined[total] = false;
@@ -606,14 +561,14 @@ h1{font-weight:800;letter-spacing:-.03em}
       line = parts[0] + ' and ' + parts[1] + ' make ' + total;
     }
     factLine[total] = line;
-    render();
+    render(false);
+    var pileEl = document.querySelector('#fact-' + total + ' .pile');
+    if (pileEl) pop(pileEl);
     say(line, '');
   }
-
   function onNext() {
     line = '';
     six = false;
-    arrived = false;
     if (index < 5) index += 1;
     else {
       index = 0;
@@ -622,23 +577,32 @@ h1{font-weight:800;letter-spacing:-.03em}
       factLine[4] = '2 and 2';
       factLine[5] = '3 and 2';
     }
-    render();
+    render(false);
   }
-
+  stage.addEventListener('click', function (e) {
+    if (e.target.closest('#add-one')) { onAdd(); return; }
+    var pileBtn = e.target.closest('.pile');
+    if (pileBtn) {
+      var fact = pileBtn.closest('.fact');
+      var total = Number(fact.getAttribute('data-total'));
+      toggleFact(total, total === 4 ? [2, 2] : [3, 2]);
+      return;
+    }
+    if (index >= 5) return;
+    var cube = e.target.closest('#blocks .cube');
+    if (!cube) cube = document.querySelector('#blocks .cube:not(.counted)');
+    if (cube) onBlock(cube);
+  });
   backBtn.addEventListener('click', function () {
     if (index === 0) return;
     line = '';
-    arrived = false;
-    if (index === 4 && six) {
-      six = false;
-      render();
-      return;
-    }
+    if (index === 4 && six) { six = false; render(false); return; }
     six = false;
     index -= 1;
-    render();
+    render(false);
   });
-
+  nextBtn.addEventListener('click', onNext);
+  window.addEventListener('resize', function () { applySize(); });
   if (window.speechSynthesis && speechSynthesis.getVoices) {
     try { speechSynthesis.getVoices(); } catch (e) {}
     speechSynthesis.addEventListener('voiceschanged', function () {
@@ -651,8 +615,7 @@ h1{font-weight:800;letter-spacing:-.03em}
       speakKn(word, voice);
     });
   }
-
-  render();
+  render(false);
 })();
 </script>
 </body>
