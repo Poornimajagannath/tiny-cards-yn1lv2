@@ -245,6 +245,20 @@ const LET = [ // Letters (WordDeck link stays)
 ["Single Letter Sounds","New sound: y says /y/, like yes."],
 ["Single Letter Sounds","New sound: z says /zzz/, like a buzzing bee."]
 ];
+// Weekly kitchen math, Saturdays of the 28-day plan (j % 7 === 5). Lines rotate by week (Math.floor(j/7)).
+const KITCHEN = [
+["Measurable Attributes of Objects","Fill a cup halfway with water for dosa batter or rice. Half or full? How much more?"],
+["Counting objects to 20","Set the table: Appa, Amma, Samaya. How many spoons?"],
+["Addition as combining or putting together two","Count peas or grapes into 3 bowls, 2 each. How many altogether?"],
+["Measurable Attributes of Objects","Pour a cup of rice into two small cups. Same or different?"]
+];
+// Weekly fair-share (early division), Wednesdays of the 28-day plan (j % 7 === 2).
+const SHARE = [
+["Comparing groups: more or fewer","Share 6 grapes between you and Teddy. How many each?"],
+["Comparing groups: more or fewer","4 blocks for 2 friends. Is that fair?"],
+["Comparing groups: more or fewer","8 crackers on 2 plates. Same on each?"],
+["Comparing groups: more or fewer","3 toys, 3 friends. One each."]
+];
 // Weekly "Speak up" card (Montessori Grace & Courtesy), Fridays of the 28-day plan (j % 7 === 4).
 // 4th field = Marble topic label(s), exact names from os-taxonomy topics.json (English, Speaking & Listening, age 4+).
 const SPEAK = [
@@ -268,6 +282,16 @@ function newCardsFor(j, i, t) {
   if (j % 7 === 4) {
     const w = SPEAK[Math.floor(j / 7)];
     out.splice(2, 0, ["💬","Speak up · " + w[0], w[1], null, null, null, false, { kn: w[2], key: key, mt: w[3] }]);
+  }
+  if (j % 7 === 2) {
+    const w = SHARE[Math.floor(j / 7)];
+    const n = out.findIndex(c => c[1] === "Numbers");
+    out.splice(n, 0, ["🍇","Share it out", w[1], null, null, w[0]]);
+  }
+  if (j % 7 === 5) {
+    const w = KITCHEN[Math.floor(j / 7)];
+    const n = out.findIndex(c => c[1] === "Numbers");
+    out.splice(n, 0, ["🥄","Kitchen math", w[1], null, null, w[0]]);
   }
   return out;
 }
