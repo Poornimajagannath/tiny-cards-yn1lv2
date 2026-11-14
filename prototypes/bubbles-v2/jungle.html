@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Grove — Ane's mangoes</title>
+<style>
+:root{
+  --sky1:#3EC6FF;--sky2:#B6F26A;--ground:#2F9E44;--hill:#7ED957;
+  --ink:#143024;--shadow:#C45C12;--go:#FF7A00;--go-shadow:#C45000;
+  --b1:#FF8A1E;--b2:#19A85A;--b3:#FF4F93;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;background:#111}
+body{font-family:"Avenir Next Rounded","Trebuchet MS",ui-rounded,system-ui,sans-serif;color:var(--ink)}
+.screen{
+  width:390px;height:844px;margin:0 auto;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,var(--sky1),var(--sky2) 62%,var(--ground));
+  display:flex;flex-direction:column;align-items:center;padding:28px 18px 22px;
+}
+.screen + .screen{margin-top:0}
+h1{margin:8px 0 0;font-size:2rem;letter-spacing:-.03em;text-align:center;line-height:1.05}
+.card{
+  background:#fff;border-radius:28px;padding:16px 18px;
+  box-shadow:0 10px 0 var(--shadow);
+  text-align:center;width:100%;
+}
+.story-line{margin:0;font-size:1.45rem;font-weight:800;line-height:1.2}
+.go{
+  margin-top:auto;width:100%;min-height:88px;border:0;border-radius:24px;
+  background:var(--go);color:#fff;font:inherit;font-weight:800;font-size:1.5rem;
+  box-shadow:0 6px 0 var(--go-shadow);
+}
+.card{margin-bottom:14px}
+.ane{width:280px;height:auto;margin-top:8px}
+.friends{width:100%;display:flex;flex-direction:column;gap:12px;margin-top:18px}
+.friend{
+  min-height:112px;border:0;border-radius:28px;background:#fff;
+  display:flex;align-items:center;gap:12px;padding:8px 16px;
+  box-shadow:0 8px 0 var(--shadow);font:inherit;font-weight:800;font-size:1.7rem;color:var(--ink);
+}
+.friend svg{width:120px;height:100px;flex:none}
+.top{width:100%;display:flex;align-items:center;justify-content:space-between}
+.basket{
+  background:#fff;border-radius:999px;min-height:64px;padding:8px 16px;
+  display:flex;align-items:center;gap:8px;font-weight:800;font-size:1.6rem;
+  font-variant-numeric:tabular-nums;box-shadow:0 4px 0 var(--shadow);
+}
+.basket .mango{width:32px;height:32px}
+.ask{display:flex;align-items:center;gap:14px;margin-top:18px}
+.ask .who{width:84px;height:74px}
+.num{
+  width:120px;height:120px;border-radius:50%;background:#fff;color:#142018;
+  display:grid;place-items:center;font-size:4.6rem;font-weight:800;line-height:1;
+  font-variant-numeric:tabular-nums;box-shadow:0 8px 0 var(--shadow);
+}
+.bubbles{display:flex;gap:14px;margin-top:auto;margin-bottom:28px}
+.bubble{
+  width:108px;height:108px;border-radius:50%;display:grid;place-items:center;
+  box-shadow:0 8px 0 rgba(0,0,0,.12);
+}
+.bubble span{
+  width:78px;height:78px;border-radius:50%;background:#fff;color:#142018;
+  display:grid;place-items:center;font-size:2.8rem;font-weight:800;
+  font-variant-numeric:tabular-nums;
+}
+.b1{background:var(--b1)} .b2{background:var(--b2)} .b3{background:var(--b3)}
+.deco{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+.hill{position:absolute;left:-10%;right:-10%;bottom:0;height:180px;background:var(--hill);border-radius:50% 50% 0 0}
+.screen > *{position:relative;z-index:1}
+.deco{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+.grove .leaf{position:absolute;z-index:0;font-size:0}
+.win-row{display:flex;gap:6px;margin:18px 0}
+.spoons{font-size:2rem;font-weight:800;line-height:1.15;margin:8px 0 0}
+.chip{
+  width:64px;height:64px;border-radius:20px;background:#fff;color:var(--ink);
+  display:grid;place-items:center;font-weight:800;font-size:1.8rem;
+  box-shadow:0 4px 0 var(--shadow);
+}
+
+</style>
+</head>
+<body>
+<section class="screen" id="story">
+  <div class="deco">
+    <div class="hill"></div>
+    <svg style="position:absolute;z-index:0;top:0;left:0;width:390px;height:92px" viewBox="0 0 390 92" aria-hidden="true">
+      <ellipse cx="40" cy="20" rx="36" ry="16" fill="#1F8A3B" transform="rotate(-20 40 20)"/>
+      <ellipse cx="110" cy="16" rx="40" ry="16" fill="#147A32" transform="rotate(12 110 16)"/>
+      <ellipse cx="200" cy="18" rx="44" ry="16" fill="#1F8A3B" transform="rotate(-8 200 18)"/>
+      <ellipse cx="290" cy="14" rx="40" ry="16" fill="#0E6A28" transform="rotate(16 290 14)"/>
+      <ellipse cx="360" cy="22" rx="36" ry="16" fill="#1F8A3B" transform="rotate(-14 360 22)"/>
+      <circle cx="70" cy="34" r="16" fill="#FFB703" stroke="#C45C12" stroke-width="3"/>
+      <circle cx="168" cy="30" r="18" fill="#FF9F1C" stroke="#C45C12" stroke-width="3"/>
+      <circle cx="250" cy="36" r="15" fill="#FFB703" stroke="#C45C12" stroke-width="3"/>
+      <circle cx="330" cy="32" r="17" fill="#FF5D8F" stroke="#C2185B" stroke-width="3"/>
+    </svg>
+    </div>
+  
+<svg class="ane" viewBox="0 0 400 460" aria-label="Ane the baby elephant">
+  <ellipse cx="86" cy="168" rx="78" ry="102" fill="#7EB6DE" stroke="#1E4E72" stroke-width="7"/>
+  <ellipse cx="90" cy="176" rx="48" ry="68" fill="#FF9EBE" stroke="#1E4E72" stroke-width="5"/>
+  <ellipse cx="314" cy="168" rx="78" ry="102" fill="#7EB6DE" stroke="#1E4E72" stroke-width="7"/>
+  <ellipse cx="310" cy="176" rx="48" ry="68" fill="#FF9EBE" stroke="#1E4E72" stroke-width="5"/>
+  <ellipse cx="200" cy="318" rx="100" ry="72" fill="#8EC4EA" stroke="#1E4E72" stroke-width="7"/>
+  <rect x="132" y="352" width="42" height="62" rx="20" fill="#8EC4EA" stroke="#1E4E72" stroke-width="7"/>
+  <rect x="226" y="352" width="42" height="62" rx="20" fill="#8EC4EA" stroke="#1E4E72" stroke-width="7"/>
+  <circle cx="200" cy="176" r="92" fill="#A9D4F2" stroke="#1E4E72" stroke-width="7"/>
+  <circle cx="168" cy="166" r="11" fill="#16324A"/>
+  <circle cx="232" cy="166" r="11" fill="#16324A"/>
+  <circle cx="172" cy="162" r="4" fill="#fff"/>
+  <circle cx="236" cy="162" r="4" fill="#fff"/>
+  <ellipse cx="140" cy="198" rx="16" ry="9" fill="#FFB3C7"/>
+  <ellipse cx="260" cy="198" rx="16" ry="9" fill="#FFB3C7"/>
+  <path d="M168 210
+           C164 250 158 286 168 318
+           C176 346 150 372 112 360
+           C88 352 92 328 118 326
+           C148 324 158 300 152 268
+           C146 236 156 214 184 206
+           C196 202 188 196 176 204 Z"
+        fill="#8EC4EA" stroke="#1E4E72" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M156 214 Q200 228 244 214" fill="none" stroke="#1E4E72" stroke-width="5" stroke-linecap="round"/>
+</svg>
+
+  <div class="card"><p class="story-line">Ane the baby elephant lost her 5 mangoes. Help her find them!</p></div>
+  <button class="go" type="button">Skip</button>
+</section>
+<section class="screen" id="pick">
+  <div class="deco">
+    <div class="hill"></div>
+    <svg style="position:absolute;z-index:0;top:0;left:0;width:390px;height:92px" viewBox="0 0 390 92" aria-hidden="true">
+      <ellipse cx="40" cy="20" rx="36" ry="16" fill="#1F8A3B" transform="rotate(-20 40 20)"/>
+      <ellipse cx="110" cy="16" rx="40" ry="16" fill="#147A32" transform="rotate(12 110 16)"/>
+      <ellipse cx="200" cy="18" rx="44" ry="16" fill="#1F8A3B" transform="rotate(-8 200 18)"/>
+      <ellipse cx="290" cy="14" rx="40" ry="16" fill="#0E6A28" transform="rotate(16 290 14)"/>
+      <ellipse cx="360" cy="22" rx="36" ry="16" fill="#1F8A3B" transform="rotate(-14 360 22)"/>
+      <circle cx="70" cy="34" r="16" fill="#FFB703" stroke="#C45C12" stroke-width="3"/>
+      <circle cx="168" cy="30" r="18" fill="#FF9F1C" stroke="#C45C12" stroke-width="3"/>
+      <circle cx="250" cy="36" r="15" fill="#FFB703" stroke="#C45C12" stroke-width="3"/>
+      <circle cx="330" cy="32" r="17" fill="#FF5D8F" stroke="#C2185B" stroke-width="3"/>
+    </svg>
+    </div>
+  <h1>Who will help?</h1>
+  <div class="friends">
+    <button class="friend" type="button">
+<svg viewBox="0 0 160 140" aria-hidden="true">
+  <ellipse cx="48" cy="78" rx="16" ry="10" fill="#F4B000" stroke="#C45C12" stroke-width="4"/>
+  <ellipse cx="36" cy="70" rx="12" ry="8" fill="#FFD15C" stroke="#C45C12" stroke-width="4"/>
+  <ellipse cx="86" cy="74" rx="40" ry="34" fill="#FFD15C" stroke="#C45C12" stroke-width="5"/>
+  <ellipse cx="70" cy="80" rx="18" ry="14" fill="#FFE38A" stroke="#C45C12" stroke-width="4"/>
+  <path d="M118 70 L152 82 L118 96 Z" fill="#FF7A1A" stroke="#C45C12" stroke-width="5" stroke-linejoin="round"/>
+  <circle cx="100" cy="66" r="6" fill="#163024"/>
+  <circle cx="102" cy="64" r="2" fill="#fff"/>
+  <path d="M40 40c10-18 28-16 30 2" fill="#FF7A1A" stroke="#C45C12" stroke-width="4"/>
+</svg>
+<span>Myna</span></button>
+    <button class="friend" type="button">
+<svg viewBox="0 0 180 120" aria-hidden="true">
+  <path d="M18 60 L52 34 L52 86 Z" fill="#1AA8B8" stroke="#0C5C72" stroke-width="5" stroke-linejoin="round"/>
+  <ellipse cx="100" cy="60" rx="52" ry="36" fill="#3ED0D6" stroke="#0C5C72" stroke-width="5"/>
+  <path d="M92 28 Q110 10 124 30" fill="#7EE7EA" stroke="#0C5C72" stroke-width="4"/>
+  <path d="M96 92 Q112 108 126 90" fill="#1AA8B8" stroke="#0C5C72" stroke-width="4"/>
+  <circle cx="124" cy="52" r="6" fill="#083040"/>
+  <circle cx="126" cy="50" r="2" fill="#fff"/>
+  <path d="M116 66 Q128 74 140 64" fill="none" stroke="#083040" stroke-width="3" stroke-linecap="round"/>
+</svg>
+<span>Meenu</span></button>
+    <button class="friend" type="button">
+<svg viewBox="0 0 160 150" aria-hidden="true">
+  <ellipse cx="46" cy="58" rx="22" ry="32" fill="#E8892E" stroke="#8A3E12" stroke-width="5"/>
+  <ellipse cx="114" cy="58" rx="22" ry="32" fill="#E8892E" stroke="#8A3E12" stroke-width="5"/>
+  <ellipse cx="46" cy="66" rx="12" ry="18" fill="#FFD0A6"/>
+  <ellipse cx="114" cy="66" rx="12" ry="18" fill="#FFD0A6"/>
+  <ellipse cx="80" cy="108" rx="46" ry="32" fill="#F4A04A" stroke="#8A3E12" stroke-width="5"/>
+  <circle cx="80" cy="70" r="36" fill="#F6B15C" stroke="#8A3E12" stroke-width="5"/>
+  <ellipse cx="80" cy="86" rx="18" ry="14" fill="#FFE0C2" stroke="#8A3E12" stroke-width="4"/>
+  <ellipse cx="80" cy="88" rx="6" ry="4" fill="#5C2A12"/>
+  <circle cx="66" cy="64" r="5" fill="#2A160C"/>
+  <circle cx="94" cy="64" r="5" fill="#2A160C"/>
+  <circle cx="68" cy="62" r="2" fill="#fff"/>
+  <circle cx="96" cy="62" r="2" fill="#fff"/>
+</svg>
+<span>Pup</span></button>
+  </div>
+</section>
+<section class="screen" id="play">
+  <div class="deco">
+    <div class="hill"></div>
+    <svg style="position:absolute;z-index:0;top:0;left:0;width:390px;height:92px" viewBox="0 0 390 92" aria-hidden="true">
+      <ellipse cx="40" cy="20" rx="36" ry="16" fill="#1F8A3B" transform="rotate(-20 40 20)"/>
+      <ellipse cx="110" cy="16" rx="40" ry="16" fill="#147A32" transform="rotate(12 110 16)"/>
+      <ellipse cx="200" cy="18" rx="44" ry="16" fill="#1F8A3B" transform="rotate(-8 200 18)"/>
+      <ellipse cx="290" cy="14" rx="40" ry="16" fill="#0E6A28" transform="rotate(16 290 14)"/>
+      <ellipse cx="360" cy="22" rx="36" ry="16" fill="#1F8A3B" transform="rotate(-14 360 22)"/>
+      <circle cx="70" cy="34" r="16" fill="#FFB703" stroke="#C45C12" stroke-width="3"/>
+      <circle cx="168" cy="30" r="18" fill="#FF9F1C" stroke="#C45C12" stroke-width="3"/>
+      <circle cx="250" cy="36" r="15" fill="#FFB703" stroke="#C45C12" stroke-width="3"/>
+      <circle cx="330" cy="32" r="17" fill="#FF5D8F" stroke="#C2185B" stroke-width="3"/>
+    </svg>
+    </div>
+  <div class="top">
+    <div class="chip">‹</div>
+    <div class="basket"><svg class="mango" viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="28" rx="14" ry="16" fill="#FFB703" stroke="#C45C12" stroke-width="3"/><path d="M24 12c4 6 12 8 16 4" fill="none" stroke="#1F8A3B" stroke-width="3" stroke-linecap="round"/></svg><span>1/5</span></div>
+    <div class="chip" aria-hidden="true">
+      <svg width="28" height="28" viewBox="0 0 48 48"><path d="M8 18h8l12-8v28L16 30H8z" fill="currentColor"/><path d="M34 16c4 4 4 12 0 16" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+  <div class="ask">
+<svg class="who" viewBox="0 0 160 140" aria-hidden="true">
+  <ellipse cx="48" cy="78" rx="16" ry="10" fill="#F4B000" stroke="#C45C12" stroke-width="4"/>
+  <ellipse cx="36" cy="70" rx="12" ry="8" fill="#FFD15C" stroke="#C45C12" stroke-width="4"/>
+  <ellipse cx="86" cy="74" rx="40" ry="34" fill="#FFD15C" stroke="#C45C12" stroke-width="5"/>
+  <ellipse cx="70" cy="80" rx="18" ry="14" fill="#FFE38A" stroke="#C45C12" stroke-width="4"/>
+  <path d="M118 70 L152 82 L118 96 Z" fill="#FF7A1A" stroke="#C45C12" stroke-width="5" stroke-linejoin="round"/>
+  <circle cx="100" cy="66" r="6" fill="#163024"/>
+  <circle cx="102" cy="64" r="2" fill="#fff"/>
+  <path d="M40 40c10-18 28-16 30 2" fill="#FF7A1A" stroke="#C45C12" stroke-width="4"/>
+</svg>
+<div class="num">3</div></div>
+  <div class="bubbles">
+    <div class="bubble b1"><span>1</span></div>
+    <div class="bubble b2"><span>3</span></div>
+    <div class="bubble b3"><span>5</span></div>
+  </div>
+</section>
+<section class="screen" id="win">
+  <div class="deco">
+    <div class="hill"></div>
+    <svg style="position:absolute;z-index:0;top:0;left:0;width:390px;height:92px" viewBox="0 0 390 92" aria-hidden="true">
+      <ellipse cx="40" cy="20" rx="36" ry="16" fill="#1F8A3B" transform="rotate(-20 40 20)"/>
+      <ellipse cx="110" cy="16" rx="40" ry="16" fill="#147A32" transform="rotate(12 110 16)"/>
+      <ellipse cx="200" cy="18" rx="44" ry="16" fill="#1F8A3B" transform="rotate(-8 200 18)"/>
+      <ellipse cx="290" cy="14" rx="40" ry="16" fill="#0E6A28" transform="rotate(16 290 14)"/>
+      <ellipse cx="360" cy="22" rx="36" ry="16" fill="#1F8A3B" transform="rotate(-14 360 22)"/>
+      <circle cx="70" cy="34" r="16" fill="#FFB703" stroke="#C45C12" stroke-width="3"/>
+      <circle cx="168" cy="30" r="18" fill="#FF9F1C" stroke="#C45C12" stroke-width="3"/>
+      <circle cx="250" cy="36" r="15" fill="#FFB703" stroke="#C45C12" stroke-width="3"/>
+      <circle cx="330" cy="32" r="17" fill="#FF5D8F" stroke="#C2185B" stroke-width="3"/>
+    </svg>
+    </div>
+  
+<svg class="ane" viewBox="0 0 400 460" aria-label="Ane the baby elephant">
+  <ellipse cx="86" cy="168" rx="78" ry="102" fill="#7EB6DE" stroke="#1E4E72" stroke-width="7"/>
+  <ellipse cx="90" cy="176" rx="48" ry="68" fill="#FF9EBE" stroke="#1E4E72" stroke-width="5"/>
+  <ellipse cx="314" cy="168" rx="78" ry="102" fill="#7EB6DE" stroke="#1E4E72" stroke-width="7"/>
+  <ellipse cx="310" cy="176" rx="48" ry="68" fill="#FF9EBE" stroke="#1E4E72" stroke-width="5"/>
+  <ellipse cx="200" cy="318" rx="100" ry="72" fill="#8EC4EA" stroke="#1E4E72" stroke-width="7"/>
+  <rect x="132" y="352" width="42" height="62" rx="20" fill="#8EC4EA" stroke="#1E4E72" stroke-width="7"/>
+  <rect x="226" y="352" width="42" height="62" rx="20" fill="#8EC4EA" stroke="#1E4E72" stroke-width="7"/>
+  <circle cx="200" cy="176" r="92" fill="#A9D4F2" stroke="#1E4E72" stroke-width="7"/>
+  <circle cx="168" cy="166" r="11" fill="#16324A"/>
+  <circle cx="232" cy="166" r="11" fill="#16324A"/>
+  <circle cx="172" cy="162" r="4" fill="#fff"/>
+  <circle cx="236" cy="162" r="4" fill="#fff"/>
+  <ellipse cx="140" cy="198" rx="16" ry="9" fill="#FFB3C7"/>
+  <ellipse cx="260" cy="198" rx="16" ry="9" fill="#FFB3C7"/>
+  <path d="M168 210
+           C164 250 158 286 168 318
+           C176 346 150 372 112 360
+           C88 352 92 328 118 326
+           C148 324 158 300 152 268
+           C146 236 156 214 184 206
+           C196 202 188 196 176 204 Z"
+        fill="#8EC4EA" stroke="#1E4E72" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M156 214 Q200 228 244 214" fill="none" stroke="#1E4E72" stroke-width="5" stroke-linecap="round"/>
+</svg>
+
+  <div class="card">
+    <div class="win-row"><svg class="mango" viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="28" rx="14" ry="16" fill="#FFB703" stroke="#C45C12" stroke-width="3"/><path d="M24 12c4 6 12 8 16 4" fill="none" stroke="#1F8A3B" stroke-width="3" stroke-linecap="round"/></svg><svg class="mango" viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="28" rx="14" ry="16" fill="#FFB703" stroke="#C45C12" stroke-width="3"/><path d="M24 12c4 6 12 8 16 4" fill="none" stroke="#1F8A3B" stroke-width="3" stroke-linecap="round"/></svg><svg class="mango" viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="28" rx="14" ry="16" fill="#FFB703" stroke="#C45C12" stroke-width="3"/><path d="M24 12c4 6 12 8 16 4" fill="none" stroke="#1F8A3B" stroke-width="3" stroke-linecap="round"/></svg><svg class="mango" viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="28" rx="14" ry="16" fill="#FFB703" stroke="#C45C12" stroke-width="3"/><path d="M24 12c4 6 12 8 16 4" fill="none" stroke="#1F8A3B" stroke-width="3" stroke-linecap="round"/></svg><svg class="mango" viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="28" rx="14" ry="16" fill="#FFB703" stroke="#C45C12" stroke-width="3"/><path d="M24 12c4 6 12 8 16 4" fill="none" stroke="#1F8A3B" stroke-width="3" stroke-linecap="round"/></svg></div>
+    <p class="spoons">Now find 3 real spoons!</p>
+  </div>
+  <button class="go" type="button">Play again</button>
+</section>
+</body>
+</html>
