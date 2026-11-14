@@ -215,6 +215,124 @@ html.land .pile .cube{width:52px;height:44px}
   .chev,.ghost,.pile,.cube{transition:none}
   .chev:active,.ghost:active,.pile:active,.cube:active{transform:none}
 }
+@media (min-height:640px){
+  body:has(#screen-together) .app{padding-bottom:calc(108px + env(safe-area-inset-bottom))}
+}
+#mango-open{
+  position:fixed;z-index:6;
+  left:16px;right:16px;
+  bottom:max(10px, env(safe-area-inset-bottom));
+  height:88px;
+  border-radius:22px;
+  border:2px solid var(--edge);
+  background:#fbf6eb;
+  color:var(--ink);
+  font:inherit;font-weight:800;font-size:1.2rem;
+  touch-action:manipulation;
+  transition:transform 140ms var(--ease);
+}
+#mango-open:active{transform:scale(0.97)}
+#mango-open[hidden]{display:none !important}
+#mango{
+  position:fixed;inset:0;z-index:20;
+  display:flex;flex-direction:column;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(166,112,64,.16), transparent 46%),
+    var(--paper);
+  color:var(--ink);
+  padding:
+    max(8px, env(safe-area-inset-top))
+    16px
+    max(12px, env(safe-area-inset-bottom));
+}
+#mango[hidden]{display:none !important}
+#mango [hidden]{display:none !important}
+.mango-top{display:flex;align-items:center;justify-content:space-between;gap:8px;flex:none}
+.mango-back,.mango-replay{
+  width:88px;height:88px;flex:none;
+  border:1.5px solid rgba(141,90,60,.28);border-radius:22px;background:#fbf6eb;
+  color:var(--edge);font:inherit;font-size:2rem;
+  display:grid;place-items:center;
+  touch-action:manipulation;
+  transition:transform 140ms var(--ease);
+}
+.mango-back:active,.mango-replay:active{transform:scale(0.97)}
+.basket{
+  min-height:64px;padding:8px 14px;border-radius:999px;
+  background:#fbf6eb;border:1.5px solid rgba(141,90,60,.28);
+  display:flex;align-items:center;gap:8px;
+  font-weight:800;font-size:1.35rem;font-variant-numeric:tabular-nums;
+}
+.mango-phase{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}
+.story-ane{width:min(46vw,200px);height:auto}
+.story-line{margin:0;font-size:1.45rem;font-weight:800;line-height:1.25;max-width:22ch}
+.mango-go{
+  width:100%;max-width:360px;min-height:88px;
+  border:0;border-radius:22px;
+  background:#6b442c;color:#fffaf3;
+  font:inherit;font-weight:800;font-size:1.35rem;
+  touch-action:manipulation;
+  transition:transform 140ms var(--ease);
+}
+.mango-go:active{transform:scale(0.97)}
+.friends{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;width:100%}
+.friend{
+  width:112px;min-height:148px;
+  border:0;border-radius:28px;background:#fbf6eb;
+  box-shadow:0 8px 16px rgba(80,40,10,.08);
+  font:inherit;font-weight:800;color:var(--ink);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  touch-action:manipulation;
+  transition:transform 140ms var(--ease);
+}
+.friend svg{width:96px;height:96px}
+.friend:active{transform:scale(0.97)}
+.play-ask{display:flex;align-items:center;justify-content:center;gap:12px}
+.play-friend{width:72px;height:72px}
+.target-num{
+  margin:0;font-size:clamp(4rem,18vw,6rem);line-height:.85;
+  letter-spacing:-.04em;font-weight:800;font-variant-numeric:tabular-nums;
+}
+.bubbles{display:flex;justify-content:center;align-items:center;gap:12px;width:100%;min-height:160px}
+.bubble{
+  width:112px;height:112px;flex:none;
+  border:0;border-radius:50%;
+  font:inherit;font-size:3rem;font-weight:800;
+  font-variant-numeric:tabular-nums;color:var(--ink);
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.9), transparent 38%),
+    rgba(186,214,208,.92);
+  box-shadow:inset 0 -10px 0 rgba(70,110,100,.12), 0 10px 16px rgba(80,40,10,.08);
+  touch-action:manipulation;
+  animation:drift 10s ease-in-out infinite;
+}
+.bubble:nth-child(2){
+  background:radial-gradient(circle at 32% 28%, rgba(255,255,255,.9), transparent 38%), rgba(232,214,186,.95);
+  animation-duration:12s;animation-delay:-4s;
+}
+.bubble:nth-child(3){
+  background:radial-gradient(circle at 32% 28%, rgba(255,255,255,.9), transparent 38%), rgba(198,216,190,.95);
+  animation-duration:14s;animation-delay:-7s;
+}
+.bubble:active{transform:scale(0.97)}
+.bubble.wiggle{animation:wiggle 380ms var(--ease)}
+@keyframes drift{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-16px)}
+}
+@keyframes wiggle{
+  0%,100%{transform:rotate(0)}
+  30%{transform:rotate(-7deg)}
+  70%{transform:rotate(7deg)}
+}
+.cheer{min-height:1.4em;margin:0;font-weight:800;font-size:1.25rem}
+.fly-mango{position:fixed;z-index:30;width:36px;height:36px;pointer-events:none}
+.spoons{margin:0;font-size:1.7rem;font-weight:800;line-height:1.25;max-width:16ch}
+@media (prefers-reduced-motion:reduce){
+  .bubble,.bubble.wiggle{animation:none}
+  #mango-open,.mango-back,.mango-replay,.mango-go,.friend{transition:none}
+  .bubble.wiggle{box-shadow:inset 0 0 0 4px var(--edge)}
+}
 </style>
 </head>
 <body>
@@ -230,6 +348,45 @@ html.land .pile .cube{width:52px;height:44px}
   </header>
   <div id="stage"></div>
   <p class="world" id="world-text">Hold up 1 finger.</p>
+</div>
+<button id="mango-open" type="button" hidden>Ane's mangoes</button>
+<div id="mango" hidden>
+  <div class="mango-top">
+    <button class="mango-back" id="mango-back" type="button" aria-label="Back to blocks">‹</button>
+    <div class="basket" id="mango-basket" aria-live="polite"><span id="mango-count">0/5</span></div>
+    <button class="mango-replay" id="mango-replay" type="button" aria-label="Say it again" hidden>
+      <svg viewBox="0 0 48 48" width="36" height="36" aria-hidden="true"><path d="M8 18h8l12-8v28L16 30H8z" fill="currentColor"/><path d="M34 18c3 3 3 9 0 12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <section class="mango-phase" id="mango-story">
+    <svg class="story-ane" viewBox="0 0 200 160" aria-hidden="true">
+      <ellipse cx="78" cy="78" rx="28" ry="34" fill="#e7c4a2"/>
+      <ellipse cx="122" cy="78" rx="28" ry="34" fill="#e7c4a2"/>
+      <ellipse cx="100" cy="96" rx="46" ry="40" fill="#c48962"/>
+      <circle cx="84" cy="90" r="4" fill="#2a2218"/>
+      <circle cx="116" cy="90" r="4" fill="#2a2218"/>
+      <path d="M100 102c8 10 8 22 0 34" fill="none" stroke="#8d5a3c" stroke-width="6" stroke-linecap="round"/>
+      <path d="M86 118c8 6 20 6 28 0" fill="none" stroke="#2a2218" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <p class="story-line" id="mango-story-text">Ane the baby elephant lost her 5 mangoes. Help her find them!</p>
+    <button class="mango-go" id="mango-skip" type="button">Skip</button>
+  </section>
+  <section class="mango-phase" id="mango-pick" hidden>
+    <p class="story-line">Who will help?</p>
+    <div class="friends" id="mango-friends"></div>
+  </section>
+  <section class="mango-phase" id="mango-play" hidden data-found="0" data-target="" data-busy="0">
+    <div class="play-ask">
+      <span class="play-friend" id="mango-friend"></span>
+      <p class="target-num" id="mango-target">3</p>
+    </div>
+    <p class="cheer" id="mango-cheer" aria-live="polite"></p>
+    <div class="bubbles" id="mango-bubbles"></div>
+  </section>
+  <section class="mango-phase" id="mango-win" hidden>
+    <p class="spoons" id="mango-spoons"></p>
+    <button class="mango-go" id="mango-again" type="button">Play again</button>
+  </section>
 </div>
 <script>
 /* Clay blocks. One carved seed on every block, earth clay, no names.
@@ -616,6 +773,359 @@ html.land .pile .cube{width:52px;height:44px}
     });
   }
   render(false);
+})();
+</script>
+<script>
+/* Ane's mangoes. A separate screen. The tower script above is unchanged. */
+(function () {
+  'use strict';
+  var STORY = 'Ane the baby elephant lost her 5 mangoes. Help her find them!';
+  var STORY_MS = 10000;
+  var EASE = 'cubic-bezier(0.23, 1, 0.32, 1)';
+  var CHEERS = ['Yes! Shabhash!', 'Lovely! Shabhash!', 'Hooray! Shabhash!'];
+  var FRIENDS = [
+    { id: 'myna', name: 'Myna', fill: '#e7c4a2', beak: '#c48962' },
+    { id: 'meenu', name: 'Meenu', fill: '#b7d0cc', beak: '#7aa8a4' },
+    { id: 'pup', name: 'Pup', fill: '#ead7b8', beak: '#8d5a3c' }
+  ];
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var openBtn = document.getElementById('mango-open');
+  var root = document.getElementById('mango');
+  var stage = document.getElementById('stage');
+  var audio = null;
+  var storyTimer = 0;
+  var roundToken = 0;
+  var found = 0;
+  var lastTarget = 0;
+  var friend = FRIENDS[0];
+  var cheerAt = 0;
+
+  function speak(text) {
+    var synth = window.speechSynthesis;
+    if (!synth || !text) return;
+    try { synth.cancel(); } catch (e) {}
+    try {
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-US';
+      u.rate = 0.9;
+      synth.speak(u);
+    } catch (e2) {}
+  }
+  function unlock() {
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    try {
+      if (!audio) audio = new AC();
+      var pending = audio.resume();
+      if (pending && pending.catch) pending.catch(function () {});
+    } catch (e) {}
+  }
+  function chime() {
+    if (!audio) return;
+    try {
+      var t = audio.currentTime;
+      var o = audio.createOscillator();
+      var g = audio.createGain();
+      o.type = 'sine';
+      o.frequency.setValueAtTime(523.25, t);
+      o.frequency.exponentialRampToValueAtTime(784, t + 0.12);
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.06, t + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.28);
+      o.connect(g);
+      g.connect(audio.destination);
+      o.start(t);
+      o.stop(t + 0.3);
+      var len = Math.floor(audio.sampleRate * 0.06);
+      var buf = audio.createBuffer(1, len, audio.sampleRate);
+      var data = buf.getChannelData(0);
+      for (var i = 0; i < len; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / len);
+      var src = audio.createBufferSource();
+      var ng = audio.createGain();
+      src.buffer = buf;
+      ng.gain.setValueAtTime(0.04, t);
+      ng.gain.exponentialRampToValueAtTime(0.0001, t + 0.07);
+      src.connect(ng);
+      ng.connect(audio.destination);
+      src.start(t);
+    } catch (e) {}
+  }
+  function face(kind, px) {
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 120 120');
+    svg.setAttribute('width', String(px));
+    svg.setAttribute('height', String(px));
+    svg.setAttribute('aria-hidden', 'true');
+    var body = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    body.setAttribute('cx', '60');
+    body.setAttribute('cy', '64');
+    body.setAttribute('r', '36');
+    body.setAttribute('fill', kind.fill);
+    svg.appendChild(body);
+    function dot(cx) {
+      var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('cx', String(cx));
+      c.setAttribute('cy', '58');
+      c.setAttribute('r', '4');
+      c.setAttribute('fill', '#2a2218');
+      svg.appendChild(c);
+    }
+    dot(46);
+    dot(74);
+    var smile = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    smile.setAttribute('d', 'M48 74c7 8 17 8 24 0');
+    smile.setAttribute('fill', 'none');
+    smile.setAttribute('stroke', '#2a2218');
+    smile.setAttribute('stroke-width', '3');
+    smile.setAttribute('stroke-linecap', 'round');
+    svg.appendChild(smile);
+    var mark = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    if (kind.id === 'myna') mark.setAttribute('d', 'M96 60c12 0 14 12 2 14');
+    else if (kind.id === 'meenu') mark.setAttribute('d', 'M22 64c-14 8 -14 -8 0 0z');
+    else mark.setAttribute('d', 'M34 36c-8-16 8-20 12-6');
+    mark.setAttribute('fill', kind.beak);
+    svg.appendChild(mark);
+    if (kind.id === 'pup') {
+      var ear = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      ear.setAttribute('d', 'M86 36c8-16 -6-22 -12-6');
+      ear.setAttribute('fill', kind.beak);
+      svg.appendChild(ear);
+    }
+    return svg;
+  }
+  function mangoIcon() {
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 32 32');
+    svg.setAttribute('width', '28');
+    svg.setAttribute('height', '28');
+    svg.setAttribute('aria-hidden', 'true');
+    var fruit = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
+    fruit.setAttribute('cx', '16');
+    fruit.setAttribute('cy', '18');
+    fruit.setAttribute('rx', '9');
+    fruit.setAttribute('ry', '11');
+    fruit.setAttribute('fill', '#e2a04a');
+    var leaf = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    leaf.setAttribute('d', 'M16 8c3 4 8 5 10 3');
+    leaf.setAttribute('fill', 'none');
+    leaf.setAttribute('stroke', '#6a8a5c');
+    leaf.setAttribute('stroke-width', '2');
+    leaf.setAttribute('stroke-linecap', 'round');
+    svg.appendChild(fruit);
+    svg.appendChild(leaf);
+    return svg;
+  }
+  function show(id) {
+    ['mango-story', 'mango-pick', 'mango-play', 'mango-win'].forEach(function (name) {
+      document.getElementById(name).hidden = name !== id;
+    });
+    document.getElementById('mango-replay').hidden = id !== 'mango-play';
+    document.getElementById('mango-basket').hidden = id === 'mango-story' || id === 'mango-pick';
+  }
+  function spoonLine(n) {
+    return 'Now find ' + n + ' real spoon' + (n === 1 ? '' : 's') + '!';
+  }
+  function syncEntry() {
+    var together = document.getElementById('screen-together');
+    var showBtn = !!together && root.hidden && window.innerHeight >= 640;
+    openBtn.hidden = !showBtn;
+  }
+  function clearStory() {
+    if (storyTimer) clearTimeout(storyTimer);
+    storyTimer = 0;
+  }
+  function showStory() {
+    clearStory();
+    found = 0;
+    lastTarget = 0;
+    show('mango-story');
+    speak(STORY);
+    storyTimer = setTimeout(showPick, STORY_MS);
+  }
+  function showPick() {
+    clearStory();
+    roundToken++;
+    show('mango-pick');
+    speak('Pick a friend!');
+  }
+  function paintCount() {
+    document.getElementById('mango-count').textContent = found + '/5';
+  }
+  function deal() {
+    var target = lastTarget;
+    var guard = 0;
+    do {
+      target = 1 + Math.floor(Math.random() * 5);
+      guard++;
+    } while (target === lastTarget && guard < 6);
+    var pool = [1, 2, 3, 4, 5].filter(function (n) { return n !== target; });
+    var digits = [target];
+    while (digits.length < 3) {
+      digits.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+    }
+    for (var i = digits.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var swap = digits[i];
+      digits[i] = digits[j];
+      digits[j] = swap;
+    }
+    var host = document.getElementById('mango-bubbles');
+    host.textContent = '';
+    digits.forEach(function (n) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'bubble';
+      b.setAttribute('data-digit', String(n));
+      b.textContent = String(n);
+      b.setAttribute('aria-label', 'Number ' + n);
+      host.appendChild(b);
+    });
+    var play = document.getElementById('mango-play');
+    play.setAttribute('data-target', String(target));
+    play.setAttribute('data-found', String(found));
+    play.setAttribute('data-busy', '0');
+    document.getElementById('mango-target').textContent = String(target);
+    document.getElementById('mango-cheer').textContent = '';
+    paintCount();
+    speak('Find number ' + target + '!');
+  }
+  function startPlay() {
+    roundToken++;
+    found = 0;
+    lastTarget = 0;
+    cheerAt = 0;
+    var slot = document.getElementById('mango-friend');
+    slot.textContent = '';
+    slot.appendChild(face(friend, 72));
+    show('mango-play');
+    paintCount();
+    deal();
+  }
+  function showWin() {
+    var line = spoonLine(lastTarget);
+    var win = document.getElementById('mango-win');
+    win.setAttribute('data-spoons', String(lastTarget));
+    document.getElementById('mango-spoons').textContent = line;
+    show('mango-win');
+    speak(line);
+  }
+  function flyMango(fromEl) {
+    if (reduce || !fromEl.animate) return;
+    var basket = document.getElementById('mango-basket');
+    var a = fromEl.getBoundingClientRect();
+    var b = basket.getBoundingClientRect();
+    var el = document.createElement('span');
+    el.className = 'fly-mango';
+    el.appendChild(mangoIcon());
+    el.style.left = (a.left + a.width / 2) + 'px';
+    el.style.top = (a.top + a.height / 2) + 'px';
+    document.body.appendChild(el);
+    var dx = (b.left + b.width / 2) - (a.left + a.width / 2);
+    var dy = (b.top + b.height / 2) - (a.top + a.height / 2);
+    var anim = el.animate([
+      { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+      { transform: 'translate(calc(-50% + ' + dx + 'px), calc(-50% + ' + dy + 'px)) scale(0.55)', opacity: 1 }
+    ], { duration: 420, easing: EASE, fill: 'forwards' });
+    anim.onfinish = function () { el.remove(); };
+  }
+  function onBubble(bubble) {
+    var play = document.getElementById('mango-play');
+    if (play.hidden || play.getAttribute('data-busy') === '1') return;
+    var digit = bubble.getAttribute('data-digit');
+    var target = play.getAttribute('data-target');
+    if (digit !== target) {
+      bubble.classList.remove('wiggle');
+      void bubble.offsetWidth;
+      bubble.classList.add('wiggle');
+      setTimeout(function () { bubble.classList.remove('wiggle'); }, 420);
+      speak('Try again!');
+      return;
+    }
+    play.setAttribute('data-busy', '1');
+    unlock();
+    chime();
+    flyMango(bubble);
+    bubble.disabled = true;
+    if (!reduce && bubble.animate) {
+      bubble.animate([
+        { transform: 'scale(1)', opacity: 1 },
+        { transform: 'scale(1.08)', opacity: 1, offset: 0.35 },
+        { transform: 'scale(0.9)', opacity: 0 }
+      ], { duration: 280, easing: EASE, fill: 'forwards' });
+    } else {
+      bubble.style.visibility = 'hidden';
+    }
+    found += 1;
+    lastTarget = Number(target);
+    play.setAttribute('data-found', String(found));
+    paintCount();
+    var cheer = CHEERS[cheerAt % CHEERS.length];
+    cheerAt += 1;
+    document.getElementById('mango-cheer').textContent = cheer;
+    speak(cheer);
+    var token = ++roundToken;
+    setTimeout(function () {
+      if (token !== roundToken) return;
+      if (found >= 5) showWin();
+      else deal();
+    }, 700);
+  }
+  function openGame() {
+    unlock();
+    root.hidden = false;
+    syncEntry();
+    showStory();
+  }
+  function closeGame() {
+    clearStory();
+    roundToken++;
+    try { if (window.speechSynthesis) speechSynthesis.cancel(); } catch (e) {}
+    root.hidden = true;
+    syncEntry();
+  }
+  openBtn.addEventListener('click', openGame);
+  document.getElementById('mango-back').addEventListener('click', closeGame);
+  document.getElementById('mango-skip').addEventListener('click', function () {
+    unlock();
+    showPick();
+  });
+  document.getElementById('mango-replay').addEventListener('click', function () {
+    unlock();
+    var play = document.getElementById('mango-play');
+    if (!play.hidden && play.getAttribute('data-target')) speak('Find number ' + play.getAttribute('data-target') + '!');
+  });
+  document.getElementById('mango-again').addEventListener('click', function () {
+    unlock();
+    showPick();
+  });
+  document.getElementById('mango-friends').addEventListener('click', function (e) {
+    var btn = e.target.closest('.friend');
+    if (!btn) return;
+    unlock();
+    friend = FRIENDS.filter(function (f) { return f.id === btn.getAttribute('data-friend'); })[0] || FRIENDS[0];
+    startPlay();
+  });
+  document.getElementById('mango-bubbles').addEventListener('click', function (e) {
+    var bubble = e.target.closest('.bubble');
+    if (bubble) onBubble(bubble);
+  });
+  FRIENDS.forEach(function (kind) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'friend';
+    btn.setAttribute('data-friend', kind.id);
+    btn.setAttribute('aria-label', kind.name);
+    btn.appendChild(face(kind, 96));
+    var label = document.createElement('span');
+    label.textContent = kind.name;
+    btn.appendChild(label);
+    document.getElementById('mango-friends').appendChild(btn);
+  });
+  var basket = document.getElementById('mango-basket');
+  basket.insertBefore(mangoIcon(), basket.firstChild);
+  new MutationObserver(syncEntry).observe(stage, { childList: true });
+  window.addEventListener('resize', syncEntry);
+  syncEntry();
 })();
 </script>
 </body>
