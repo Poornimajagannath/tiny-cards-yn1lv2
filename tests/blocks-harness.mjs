@@ -18,7 +18,7 @@ import { createServer } from 'http';
 import { readFile } from 'fs/promises';
 import { mkdir, copyFile } from 'fs/promises';
 import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+import { dirname, join, extname } from 'path';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const artifacts = '/opt/cursor/artifacts';
@@ -28,16 +28,37 @@ function assert(cond, message) {
   if (!cond) throw new Error(message);
 }
 
+const types = {
+  '.html': 'text/html; charset=utf-8',
+  '.webp': 'image/webp',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.js': 'text/javascript',
+  '.css': 'text/css',
+};
+
 const server = createServer(async (req, res) => {
-  const path = (req.url || '/').split('?')[0];
-  if (path !== '/' && path !== '/blocks.html') {
-    res.writeHead(404);
-    res.end('not found');
+  const urlPath = decodeURIComponent((req.url || '/').split('?')[0]);
+  const rel = (urlPath === '/' ? 'blocks.html' : urlPath.replace(/^\/+/, ''));
+  if (rel.includes('..')) {
+    res.writeHead(400);
+    res.end('bad path');
     return;
   }
-  const body = await readFile(join(root, 'blocks.html'));
-  res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
-  res.end(body);
+  const file = join(root, rel);
+  if (!file.startsWith(root)) {
+    res.writeHead(403);
+    res.end('forbidden');
+    return;
+  }
+  try {
+    const body = await readFile(file);
+    res.writeHead(200, { 'content-type': types[extname(file)] || 'application/octet-stream' });
+    res.end(body);
+  } catch {
+    res.writeHead(404);
+    res.end('not found');
+  }
 });
 
 await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));

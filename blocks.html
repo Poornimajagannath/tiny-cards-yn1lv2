@@ -236,13 +236,11 @@ html.land .pile .cube{width:52px;height:44px}
 #mango{
   position:fixed;inset:0;z-index:20;
   display:flex;flex-direction:column;
-  background:
-    radial-gradient(ellipse at 50% 100%, rgba(166,112,64,.16), transparent 46%),
-    var(--paper);
+  background:#7ec85a url("assets/bubbles/bg-backyard.webp") center/cover no-repeat;
   color:var(--ink);
   padding:
     max(8px, env(safe-area-inset-top))
-    16px
+    10px
     max(12px, env(safe-area-inset-bottom));
 }
 #mango[hidden]{display:none !important}
@@ -250,61 +248,85 @@ html.land .pile .cube{width:52px;height:44px}
 .mango-top{display:flex;align-items:center;justify-content:space-between;gap:8px;flex:none}
 .mango-back,.mango-replay{
   width:88px;height:88px;flex:none;
-  border:1.5px solid rgba(141,90,60,.28);border-radius:22px;background:#fbf6eb;
+  border:0;border-radius:22px;background:rgba(255,250,243,.94);
   color:var(--edge);font:inherit;font-size:2rem;
   display:grid;place-items:center;
+  box-shadow:0 8px 16px rgba(40,70,20,.16);
   touch-action:manipulation;
   transition:transform 140ms var(--ease);
 }
 .mango-back:active,.mango-replay:active{transform:scale(0.97)}
 .basket{
   min-height:64px;padding:8px 14px;border-radius:999px;
-  background:#fbf6eb;border:1.5px solid rgba(141,90,60,.28);
+  background:rgba(255,250,243,.94);
+  box-shadow:0 8px 16px rgba(40,70,20,.16);
   display:flex;align-items:center;gap:8px;
   font-weight:800;font-size:1.35rem;font-variant-numeric:tabular-nums;
 }
-.mango-phase{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}
-.story-ane{width:min(46vw,200px);height:auto}
-.story-line{margin:0;font-size:1.45rem;font-weight:800;line-height:1.25;max-width:22ch}
+.mango-phase{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:10px;text-align:center;width:100%}
+#mango-pick{justify-content:center}
+.actor{
+  display:block;
+  height:auto;
+  object-fit:contain;
+  pointer-events:none;
+  transform-origin:50% 100%;
+  animation:bob 2.8s cubic-bezier(0.45,0,0.55,1) infinite;
+}
+.story-ane,.win-ane{width:auto;height:min(42vh,380px);max-width:92vw}
+.play-friend{width:auto;height:min(32vh,250px);max-width:78vw}
+.story-line,.spoons{
+  margin:0;font-weight:800;line-height:1.25;
+  background:rgba(255,250,243,.94);
+  border-radius:18px;
+  padding:10px 14px;
+  box-shadow:0 8px 16px rgba(40,70,20,.12);
+}
+.story-line{font-size:clamp(1.2rem,5.2vw,1.45rem);max-width:22ch}
 .mango-go{
   width:100%;max-width:360px;min-height:88px;
   border:0;border-radius:22px;
   background:#6b442c;color:#fffaf3;
   font:inherit;font-weight:800;font-size:1.35rem;
+  box-shadow:0 8px 16px rgba(40,70,20,.16);
   touch-action:manipulation;
   transition:transform 140ms var(--ease);
 }
 .mango-go:active{transform:scale(0.97)}
-.friends{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;width:100%}
+.friends{display:flex;justify-content:center;gap:8px;width:100%}
 .friend{
-  width:112px;min-height:148px;
-  border:0;border-radius:28px;background:#fbf6eb;
-  box-shadow:0 8px 16px rgba(80,40,10,.08);
-  font:inherit;font-weight:800;color:var(--ink);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  flex:1 1 0;min-width:0;min-height:168px;
+  border:0;border-radius:28px;background:rgba(255,250,243,.92);
+  box-shadow:0 8px 16px rgba(40,70,20,.14);
+  font:inherit;font-weight:800;color:var(--ink);font-size:1rem;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px;
+  padding:8px 4px 10px;
   touch-action:manipulation;
   transition:transform 140ms var(--ease);
 }
-.friend svg{width:96px;height:96px}
+.friend img{width:100%;height:min(22vh,148px);object-fit:contain}
 .friend:active{transform:scale(0.97)}
-.play-ask{display:flex;align-items:center;justify-content:center;gap:12px}
-.play-friend{width:72px;height:72px}
 .target-num{
-  margin:0;font-size:clamp(4rem,18vw,6rem);line-height:.85;
+  margin:0;font-size:clamp(3.4rem,16vw,5.4rem);line-height:.85;
   letter-spacing:-.04em;font-weight:800;font-variant-numeric:tabular-nums;
+  background:rgba(255,250,243,.94);
+  border-radius:24px;
+  padding:6px 18px 10px;
+  min-width:88px;
+  box-shadow:0 8px 16px rgba(40,70,20,.12);
 }
-.bubbles{display:flex;justify-content:center;align-items:center;gap:12px;width:100%;min-height:160px}
+.bubbles{display:flex;justify-content:center;align-items:flex-end;gap:8px;width:100%;min-height:96px}
 .bubble{
-  width:112px;height:112px;flex:none;
+  width:calc((100% - 16px) / 3);max-width:112px;aspect-ratio:1;height:auto;flex:none;
   border:0;border-radius:50%;
-  font:inherit;font-size:3rem;font-weight:800;
+  font:inherit;font-size:clamp(2rem,9vw,3rem);font-weight:800;
   font-variant-numeric:tabular-nums;color:var(--ink);
   background:
     radial-gradient(circle at 32% 28%, rgba(255,255,255,.9), transparent 38%),
     rgba(186,214,208,.92);
-  box-shadow:inset 0 -10px 0 rgba(70,110,100,.12), 0 10px 16px rgba(80,40,10,.08);
+  box-shadow:inset 0 -10px 0 rgba(70,110,100,.12), 0 10px 16px rgba(40,70,20,.12);
   touch-action:manipulation;
-  animation:drift 10s ease-in-out infinite;
+  animation:drift 10s cubic-bezier(0.45,0,0.55,1) infinite;
 }
 .bubble:nth-child(2){
   background:radial-gradient(circle at 32% 28%, rgba(255,255,255,.9), transparent 38%), rgba(232,214,186,.95);
@@ -316,20 +338,35 @@ html.land .pile .cube{width:52px;height:44px}
 }
 .bubble:active{transform:scale(0.97)}
 .bubble.wiggle{animation:wiggle 380ms var(--ease)}
+@keyframes bob{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
 @keyframes drift{
   0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-16px)}
+  50%{transform:translateY(-14px)}
 }
 @keyframes wiggle{
   0%,100%{transform:rotate(0)}
   30%{transform:rotate(-7deg)}
   70%{transform:rotate(7deg)}
 }
-.cheer{min-height:1.4em;margin:0;font-weight:800;font-size:1.25rem}
+.cheer{
+  min-height:44px;margin:0;font-weight:800;font-size:1.2rem;
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:6px 14px;border-radius:999px;
+}
+.cheer:not(:empty){background:rgba(255,250,243,.94);box-shadow:0 8px 16px rgba(40,70,20,.12)}
 .fly-mango{position:fixed;z-index:30;width:36px;height:36px;pointer-events:none}
-.spoons{margin:0;font-size:1.7rem;font-weight:800;line-height:1.25;max-width:16ch}
+.spoons{font-size:clamp(1.35rem,5.6vw,1.7rem);max-width:16ch}
+@media (max-height:740px){
+  .story-ane,.win-ane{height:min(34vh,300px)}
+  .play-friend{height:min(26vh,200px)}
+  .friend{min-height:148px}
+  .friend img{height:min(18vh,120px)}
+}
 @media (prefers-reduced-motion:reduce){
-  .bubble,.bubble.wiggle{animation:none}
+  .bubble,.bubble.wiggle,.actor{animation:none}
   #mango-open,.mango-back,.mango-replay,.mango-go,.friend{transition:none}
   .bubble.wiggle{box-shadow:inset 0 0 0 4px var(--edge)}
 }
@@ -359,16 +396,8 @@ html.land .pile .cube{width:52px;height:44px}
     </button>
   </div>
   <section class="mango-phase" id="mango-story">
-    <svg class="story-ane" viewBox="0 0 200 160" aria-hidden="true">
-      <ellipse cx="78" cy="78" rx="28" ry="34" fill="#e7c4a2"/>
-      <ellipse cx="122" cy="78" rx="28" ry="34" fill="#e7c4a2"/>
-      <ellipse cx="100" cy="96" rx="46" ry="40" fill="#c48962"/>
-      <circle cx="84" cy="90" r="4" fill="#2a2218"/>
-      <circle cx="116" cy="90" r="4" fill="#2a2218"/>
-      <path d="M100 102c8 10 8 22 0 34" fill="none" stroke="#8d5a3c" stroke-width="6" stroke-linecap="round"/>
-      <path d="M86 118c8 6 20 6 28 0" fill="none" stroke="#2a2218" stroke-width="3" stroke-linecap="round"/>
-    </svg>
     <p class="story-line" id="mango-story-text">Ane the baby elephant lost her 5 mangoes. Help her find them!</p>
+    <img class="actor story-ane" src="assets/bubbles/ane-sad.webp" alt="Ane">
     <button class="mango-go" id="mango-skip" type="button">Skip</button>
   </section>
   <section class="mango-phase" id="mango-pick" hidden>
@@ -376,14 +405,13 @@ html.land .pile .cube{width:52px;height:44px}
     <div class="friends" id="mango-friends"></div>
   </section>
   <section class="mango-phase" id="mango-play" hidden data-found="0" data-target="" data-busy="0">
-    <div class="play-ask">
-      <span class="play-friend" id="mango-friend"></span>
-      <p class="target-num" id="mango-target">3</p>
-    </div>
+    <img class="actor play-friend" id="mango-friend" alt="" data-pose="idle" src="assets/bubbles/myna-idle.webp">
+    <p class="target-num" id="mango-target">3</p>
     <p class="cheer" id="mango-cheer" aria-live="polite"></p>
     <div class="bubbles" id="mango-bubbles"></div>
   </section>
   <section class="mango-phase" id="mango-win" hidden>
+    <img class="actor win-ane" src="assets/bubbles/ane-win.webp" alt="Ane with her mangoes">
     <p class="spoons" id="mango-spoons"></p>
     <button class="mango-go" id="mango-again" type="button">Play again</button>
   </section>
@@ -784,9 +812,9 @@ html.land .pile .cube{width:52px;height:44px}
   var EASE = 'cubic-bezier(0.23, 1, 0.32, 1)';
   var CHEERS = ['Yes! Shabhash!', 'Lovely! Shabhash!', 'Hooray! Shabhash!'];
   var FRIENDS = [
-    { id: 'myna', name: 'Myna', fill: '#e7c4a2', beak: '#c48962' },
-    { id: 'meenu', name: 'Meenu', fill: '#b7d0cc', beak: '#7aa8a4' },
-    { id: 'pup', name: 'Pup', fill: '#ead7b8', beak: '#8d5a3c' }
+    { id: 'myna', name: 'Myna', idle: 'assets/bubbles/myna-idle.webp', cheer: 'assets/bubbles/myna-cheer.webp', encourage: 'assets/bubbles/myna-encourage.webp' },
+    { id: 'kapi', name: 'Kapi', idle: 'assets/bubbles/kapi-idle.webp', cheer: 'assets/bubbles/kapi-cheer.webp', encourage: 'assets/bubbles/kapi-encourage.webp' },
+    { id: 'ziggy', name: 'Ziggy', idle: 'assets/bubbles/ziggy-idle.webp', cheer: 'assets/bubbles/ziggy-cheer.webp', encourage: 'assets/bubbles/ziggy-encourage.webp' }
   ];
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var openBtn = document.getElementById('mango-open');
@@ -850,48 +878,12 @@ html.land .pile .cube{width:52px;height:44px}
       src.start(t);
     } catch (e) {}
   }
-  function face(kind, px) {
-    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('viewBox', '0 0 120 120');
-    svg.setAttribute('width', String(px));
-    svg.setAttribute('height', String(px));
-    svg.setAttribute('aria-hidden', 'true');
-    var body = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    body.setAttribute('cx', '60');
-    body.setAttribute('cy', '64');
-    body.setAttribute('r', '36');
-    body.setAttribute('fill', kind.fill);
-    svg.appendChild(body);
-    function dot(cx) {
-      var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      c.setAttribute('cx', String(cx));
-      c.setAttribute('cy', '58');
-      c.setAttribute('r', '4');
-      c.setAttribute('fill', '#2a2218');
-      svg.appendChild(c);
-    }
-    dot(46);
-    dot(74);
-    var smile = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    smile.setAttribute('d', 'M48 74c7 8 17 8 24 0');
-    smile.setAttribute('fill', 'none');
-    smile.setAttribute('stroke', '#2a2218');
-    smile.setAttribute('stroke-width', '3');
-    smile.setAttribute('stroke-linecap', 'round');
-    svg.appendChild(smile);
-    var mark = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    if (kind.id === 'myna') mark.setAttribute('d', 'M96 60c12 0 14 12 2 14');
-    else if (kind.id === 'meenu') mark.setAttribute('d', 'M22 64c-14 8 -14 -8 0 0z');
-    else mark.setAttribute('d', 'M34 36c-8-16 8-20 12-6');
-    mark.setAttribute('fill', kind.beak);
-    svg.appendChild(mark);
-    if (kind.id === 'pup') {
-      var ear = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      ear.setAttribute('d', 'M86 36c8-16 -6-22 -12-6');
-      ear.setAttribute('fill', kind.beak);
-      svg.appendChild(ear);
-    }
-    return svg;
+  function setPose(pose) {
+    var img = document.getElementById('mango-friend');
+    if (!img || !friend[pose]) return;
+    img.setAttribute('data-pose', pose);
+    img.alt = friend.name;
+    if (img.getAttribute('src') !== friend[pose]) img.src = friend[pose];
   }
   function mangoIcon() {
     var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -986,6 +978,7 @@ html.land .pile .cube{width:52px;height:44px}
     play.setAttribute('data-busy', '0');
     document.getElementById('mango-target').textContent = String(target);
     document.getElementById('mango-cheer').textContent = '';
+    setPose('idle');
     paintCount();
     speak('Find number ' + target + '!');
   }
@@ -994,9 +987,7 @@ html.land .pile .cube{width:52px;height:44px}
     found = 0;
     lastTarget = 0;
     cheerAt = 0;
-    var slot = document.getElementById('mango-friend');
-    slot.textContent = '';
-    slot.appendChild(face(friend, 72));
+    setPose('idle');
     show('mango-play');
     paintCount();
     deal();
@@ -1038,6 +1029,8 @@ html.land .pile .cube{width:52px;height:44px}
       void bubble.offsetWidth;
       bubble.classList.add('wiggle');
       setTimeout(function () { bubble.classList.remove('wiggle'); }, 420);
+      document.getElementById('mango-cheer').textContent = 'Try again!';
+      setPose('encourage');
       speak('Try again!');
       return;
     }
@@ -1062,13 +1055,14 @@ html.land .pile .cube{width:52px;height:44px}
     var cheer = CHEERS[cheerAt % CHEERS.length];
     cheerAt += 1;
     document.getElementById('mango-cheer').textContent = cheer;
+    setPose('cheer');
     speak(cheer);
     var token = ++roundToken;
     setTimeout(function () {
       if (token !== roundToken) return;
       if (found >= 5) showWin();
       else deal();
-    }, 700);
+    }, 1200);
   }
   function openGame() {
     unlock();
@@ -1115,7 +1109,12 @@ html.land .pile .cube{width:52px;height:44px}
     btn.className = 'friend';
     btn.setAttribute('data-friend', kind.id);
     btn.setAttribute('aria-label', kind.name);
-    btn.appendChild(face(kind, 96));
+    var pic = document.createElement('img');
+    pic.className = 'actor';
+    pic.src = kind.idle;
+    pic.alt = '';
+    pic.draggable = false;
+    btn.appendChild(pic);
     var label = document.createElement('span');
     label.textContent = kind.name;
     btn.appendChild(label);

@@ -14,7 +14,7 @@ import { createServer } from 'http';
 import { readFile, mkdir, copyFile } from 'fs/promises';
 import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+import { dirname, join, extname } from 'path';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const artifacts = '/opt/cursor/artifacts';
@@ -35,16 +35,45 @@ const committed = execSync('git show HEAD:blocks.html', { cwd: root, encoding: '
 assert(firstScript(now) === firstScript(committed), 'tower script changed');
 assert(now.includes('Ane the baby elephant lost her 5 mangoes'), 'story missing');
 assert(now.includes('STORY_MS = 10000'), 'story is not 10 seconds');
+assert(now.includes("name: 'Ziggy'"), 'Ziggy missing');
+assert(!now.includes('Pup') && !now.includes('Meenu'), 'old friend names remain');
+
+const types = {
+  '.html': 'text/html; charset=utf-8',
+  '.webp': 'image/webp',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.js': 'text/javascript',
+  '.css': 'text/css',
+};
 
 const server = createServer(async (req, res) => {
-  const path = (req.url || '/').split('?')[0];
-  if (path !== '/' && path !== '/blocks.html') {
-    res.writeHead(404);
-    res.end('not found');
+  const urlPath = decodeURIComponent((req.url || '/').split('?')[0]);
+  const rel = (urlPath === '/' ? 'blocks.html' : urlPath.replace(/^\/+/, ''));
+  if (rel.includes('..')) {
+    res.writeHead(400);
+    res.end('bad path');
     return;
   }
-  res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
-  res.end(now);
+  if (rel === 'blocks.html') {
+    res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
+    res.end(now);
+    return;
+  }
+  const file = join(root, rel);
+  if (!file.startsWith(root)) {
+    res.writeHead(403);
+    res.end('forbidden');
+    return;
+  }
+  try {
+    const body = await readFile(file);
+    res.writeHead(200, { 'content-type': types[extname(file)] || 'application/octet-stream' });
+    res.end(body);
+  } catch {
+    res.writeHead(404);
+    res.end('not found');
+  }
 });
 await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
 const origin = `http://127.0.0.1:${server.address().port}`;
@@ -144,6 +173,10 @@ try {
   await pause(200);
   assert(await page.locator('#mango-pick').isVisible(), 'pick after skip');
   assert(await page.locator('.friend').count() === 3, 'three friends');
+  const names = await page.locator('.friend').evaluateAll((els) => els.map((el) => el.getAttribute('aria-label')));
+  assert(names.join(',') === 'Myna,Kapi,Ziggy', 'friend names ' + names.join(','));
+  const storyLoaded = await page.locator('.story-ane').evaluate((el) => el.complete && el.naturalWidth > 0);
+  assert(storyLoaded, 'sad Ane did not load');
   for (const friend of await page.locator('.friend').all()) {
     const r = await friend.boundingBox();
     assert(r && r.width >= 88 && r.height >= 88, 'friend smaller than 88');
@@ -152,6 +185,9 @@ try {
   await page.locator('.friend').first().click();
   await pause(250);
   assert(await page.locator('#mango-play').isVisible(), 'play visible');
+  assert(await page.locator('#mango-friend').getAttribute('data-pose') === 'idle', 'friend did not start idle');
+  const friendLoaded = await page.locator('#mango-friend').evaluate((el) => el.complete && el.naturalWidth > 0);
+  assert(friendLoaded, 'friend pose did not load');
   assert((await utters()).some((t) => /^Find number [1-5]!$/.test(t)), 'find prompt');
   const bubbles = page.locator('.bubble');
   assert(await bubbles.count() === 3, 'three bubbles');
@@ -174,6 +210,8 @@ try {
   assert((await page.locator('#mango-count').textContent()) === '0/5', 'counter moved on a miss');
   const afterWrong = await utters();
   assert(afterWrong.slice(before.length).some((t) => t === 'Try again!'), 'no try again ' + afterWrong.join(' | '));
+  assert(await page.locator('#mango-friend').getAttribute('data-pose') === 'encourage', 'miss did not switch to encourage');
+  assert((await page.locator('#mango-cheer').textContent()) === 'Try again!', 'miss line not on screen');
   await shot('wrong.png');
 
   async function tapRight() {
@@ -190,6 +228,9 @@ try {
   await tapRight();
   assert((await page.locator('#mango-count').textContent()) === '1/5', 'first mango');
   assert((await utters()).some((t) => t.includes('Shabhash!')), 'cheer missing');
+  assert(await page.locator('#mango-friend').getAttribute('data-pose') === 'cheer', 'hit did not switch to cheer');
+  assert((await page.locator('#mango-cheer').textContent() || '').includes('Shabhash!'), 'cheer not on screen');
+  await shot('found.png');
   await page.locator('#mango-replay').click();
   await page.waitForFunction(() => {
     const play = document.getElementById('mango-play');
@@ -197,7 +238,6 @@ try {
   });
   const replayTarget = await page.locator('#mango-play').getAttribute('data-target');
   assert((await utters()).filter((t) => t === 'Find number ' + replayTarget + '!').length >= 1, 'replay did not speak');
-  await shot('found.png');
 
   for (let i = 0; i < 4; i++) {
     await page.waitForFunction(() => document.getElementById('mango-play').getAttribute('data-busy') === '0');
@@ -210,6 +250,10 @@ try {
   const expected = spoons === '1' ? 'Now find 1 real spoon!' : 'Now find ' + spoons + ' real spoons!';
   assert(spoonText === expected, 'spoon line ' + spoonText + ' vs ' + expected);
   assert((await utters()).some((t) => t === expected), 'spoon line not spoken');
+  const winSrc = await page.locator('.win-ane').getAttribute('src');
+  assert(winSrc && winSrc.includes('ane-win'), 'win pose ' + winSrc);
+  const winLoaded = await page.locator('.win-ane').evaluate((el) => el.complete && el.naturalWidth > 0);
+  assert(winLoaded, 'win Ane did not load');
   assert(await page.locator('#mango-play').isHidden(), 'bubbles still up after the win');
   const again = await box('#mango-again');
   assert(again.height >= 88, 'play again small');
@@ -234,12 +278,29 @@ try {
   for (let i = 0; i < 5; i++) await narrowPage.locator('#next').click();
   await narrowPage.locator('#mango-open').click();
   await narrowPage.locator('#mango-skip').click();
+  const narrowFriends = await narrowPage.locator('.friend').evaluateAll((els) => els.map((el) => {
+    const r = el.getBoundingClientRect();
+    return { w: r.width, h: r.height };
+  }));
   await narrowPage.locator('.friend').nth(1).click();
+  await narrowPage.screenshot({ path: join(shots, 'narrow-320.png') });
   const narrowSize = await narrowPage.evaluate(() => ({
     sw: document.documentElement.scrollWidth,
     cw: document.documentElement.clientWidth,
+    bubbles: [...document.querySelectorAll('.bubble')].map((el) => {
+      const r = el.getBoundingClientRect();
+      return { w: r.width, h: r.height, left: r.left, right: r.right };
+    }),
   }));
+  narrowSize.friends = narrowFriends;
   assert(narrowSize.sw <= narrowSize.cw + 1, '320 overflow ' + narrowSize.sw);
+  for (const bubble of narrowSize.bubbles) {
+    assert(bubble.w >= 88 && bubble.h >= 88, '320 bubble ' + bubble.w + 'x' + bubble.h);
+    assert(bubble.left >= -1 && bubble.right <= narrowSize.cw + 1, '320 bubble offscreen');
+  }
+  for (const friend of narrowSize.friends) {
+    assert(friend.w >= 88 && friend.h >= 88, '320 friend ' + friend.w + 'x' + friend.h);
+  }
   await narrow.close();
 
   console.log('bubbles harness passed');
