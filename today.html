@@ -270,7 +270,11 @@ const SPEAK = [
 function newCardsFor(j, i, t) {
   const key = t.getFullYear() + "-" + String(t.getMonth()+1).padStart(2,"0") + "-" + String(t.getDate()).padStart(2,"0");
   const lionLine = lionWeek[key] || lion[i % lion.length];
+  // Same ritual every day. She holds the lid or rings the bell; she does not light the flame.
+  let ritual = "Light the deepa together. Sing Tarakka Bindige. She holds the matchbox lid or rings the small bell. Festival job: she places the flowers.";
+  if (j % 7 === 5) ritual = "Light the deepa together. Sing Tarakka Bindige. She holds the matchbox lid or rings the small bell. Kitchen math is her Saturday job with Amma, the same job every week. Festival job: she places the flowers.";
   const out = [
+    ["🪔","Our ritual", ritual, null, null, "Belonging: family ritual"],
     ["✦","Play", P[j][1], null, null, P[j][0]],
     ["🙂","Feelings", F[j][1], null, null, F[j][0]],
     ["🏠","Home", routines[i % routines.length].split(".")[0]],
@@ -281,7 +285,8 @@ function newCardsFor(j, i, t) {
   ];
   if (j % 7 === 4) {
     const w = SPEAK[Math.floor(j / 7)];
-    out.splice(2, 0, ["💬","Speak up · " + w[0], w[1], null, null, null, false, { kn: w[2], key: key, mt: w[3] }]);
+    const h = out.findIndex(c => c[1] === "Home");
+    out.splice(h, 0, ["💬","Speak up · " + w[0], w[1], null, null, null, false, { kn: w[2], key: key, mt: w[3] }]);
   }
   if (j % 7 === 2) {
     const w = SHARE[Math.floor(j / 7)];
@@ -344,7 +349,7 @@ function render() {
   document.getElementById("kicker").textContent = c[1];
   document.getElementById("line").textContent = c[2];
   const sp = c[7];
-  document.getElementById("tag").textContent = sp ? "Marble · " + sp.mt : (c[5] ? "Marble · " + c[5] : "");
+  document.getElementById("tag").textContent = sp ? "Marble · " + sp.mt : (c[5] ? (c[5].indexOf("Belonging:") === 0 ? c[5] : "Marble · " + c[5]) : "");
   const kn = document.getElementById("kn");
   kn.style.display = sp ? "block" : "none"; kn.textContent = sp ? sp.kn : "";
   sayKey = sp ? sp.key : null;
